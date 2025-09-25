@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f3a82db2490c94c85777e67be32fa6, type: 3}
+  m_Name: Distancia
+  m_EditorClassIdentifier: 
+  infoArmas:
+  - nombre: honda
+    "da\xF1o": 25
+    tipoArma: 1
+    durabilidad: 5
+    tiempoEspera: 6
+    cadencia: 3
+    prefabArma: {fileID: 0}
+    enUso: 0
+  - nombre: ladrillo
+    "da\xF1o": 100
+    tipoArma: 1
+    durabilidad: 1
+    tiempoEspera: 6
+    cadencia: 0
+    prefabArma: {fileID: 0}
+    enUso: 0
+  - nombre: ametralladora
+    "da\xF1o": 100
+    tipoArma: 1
+    durabilidad: 50
+    tiempoEspera: 0
+    cadencia: 0.1
+    prefabArma: {fileID: 0}
+    enUso: 0
+  - nombre: 
+    "da\xF1o": 0
+    tipoArma: 0
+    durabilidad: 0
+    tiempoEspera: 0
+    cadencia: 0
+    prefabArma: {fileID: 0}
+    enUso: 0
+  - nombre: 
+    "da\xF1o": 0
+    tipoArma: 0
+    durabilidad: 0
+    tiempoEspera: 0
+    cadencia: 0
+    prefabArma: {fileID: 0}
+    enUso: 0
