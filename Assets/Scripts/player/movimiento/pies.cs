@@ -29,4 +29,9 @@ public class LimitarPies : MonoBehaviour
         // Aplicar la posición corregida
         transform.position = pos;
     }
+
+    public void ReproducirPaso()
+    {
+        ControlSFX.Instance.ReproducirSonido("paso1");
+    }
 }

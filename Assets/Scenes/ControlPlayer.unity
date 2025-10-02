@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,6 +136,7 @@ GameObject:
   - component: {fileID: 184747963}
   - component: {fileID: 184747964}
   - component: {fileID: 184747962}
+  - component: {fileID: 184747965}
   m_Layer: 3
   m_Name: enemy
   m_TagString: Untagged
@@ -302,6 +302,18 @@ MonoBehaviour:
   enemyFeet: {fileID: 260227329}
   playerFeet: {fileID: 1452872212}
   verticalTolerance: 1.91
+--- !u!114 &184747965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184747958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60eab17b06d663428550c00b25271c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &195420724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,11 +1205,12 @@ Transform:
   m_GameObject: {fileID: 1092139640}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.879999, y: 0.33000004, z: 0}
+  m_LocalPosition: {x: 4.51, y: 0.33000004, z: 0}
   m_LocalScale: {x: 3.7187502, y: 3.7187502, z: 3.7187502}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 260227329}
+  - {fileID: 1637329168}
   m_Father: {fileID: 195420725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1092139646
@@ -1282,6 +1295,64 @@ Transform:
   - {fileID: 1841380982}
   - {fileID: 1829803219}
   - {fileID: 1078084841}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1291613948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1291613950}
+  - component: {fileID: 1291613949}
+  m_Layer: 0
+  m_Name: ControlSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1291613949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291613948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40e36129def9d84e89a4188a6e0560a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listaSonidos:
+  - nombre: golpe1
+    clip: {fileID: 8300000, guid: 7febadef11f31da4b83241ad69bc57a4, type: 3}
+    parlante: {fileID: 0}
+  - nombre: golpeCuchillo
+    clip: {fileID: 8300000, guid: dda034816cc42cd458533fd369346e74, type: 3}
+    parlante: {fileID: 0}
+  - nombre: paso1
+    clip: {fileID: 8300000, guid: 31147a64812ea274c86cce151514e917, type: 3}
+    parlante: {fileID: 0}
+  - nombre: grito1
+    clip: {fileID: 8300000, guid: 5d9dfe7bb13e30e488eddd099e6ce94e, type: 3}
+    parlante: {fileID: 0}
+  variacionPitch: 0.2
+--- !u!4 &1291613950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291613948}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4993095, y: -2.6916115, z: 0.060664576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412672421
@@ -1550,12 +1621,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!114 &1449388339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1648,6 +1719,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1637329167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637329168}
+  - component: {fileID: 1637329169}
+  m_Layer: 0
+  m_Name: colliderGolpe
+  m_TagString: "da\xF1oPersonaje"
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1637329168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637329167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.304, y: 0.009, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1092139645}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1637329169
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637329167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!1 &1672659072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,3 +2570,4 @@ SceneRoots:
   - {fileID: 792931953}
   - {fileID: 1081847918}
   - {fileID: 1520661679}
+  - {fileID: 1291613950}

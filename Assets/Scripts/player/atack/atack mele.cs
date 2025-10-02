@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerAttacks : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
     private bool isJabbing = false;
 
     void Update()
@@ -16,10 +15,12 @@ public class PlayerAttacks : MonoBehaviour
 
     void DoJab()
     {
+        ControlSFX.Instance.ReproducirSonido("golpe1");
         isJabbing = true;
         animator.SetBool("pega", true); // ✅ Activa animación
         Debug.Log("Ejecutando Jab");
     }
+
 
     // 🔹 Llamado al final de la animación con Animation Event
     public void EndJab()
