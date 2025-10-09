@@ -12,6 +12,8 @@ public class CountdownTimer : MonoBehaviour
 
     private Coroutine countdownCoroutine;
 
+    private WaitForSeconds tiempoEspera = new WaitForSeconds(1f);
+
     void Start()
     {
         ResetCountdown();
@@ -22,7 +24,7 @@ public class CountdownTimer : MonoBehaviour
         while (currentTime > 0)
         {
             timerText.text = currentTime.ToString();
-            yield return new WaitForSeconds(1f);
+            yield return tiempoEspera;
             currentTime--;
         }
 

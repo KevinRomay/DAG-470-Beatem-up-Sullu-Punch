@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class cicloDeVida : MonoBehaviour
+public class CicloDeVida : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
