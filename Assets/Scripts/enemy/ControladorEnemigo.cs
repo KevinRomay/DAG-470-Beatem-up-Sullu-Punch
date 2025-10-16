@@ -67,7 +67,7 @@ public class ControladorEnemigo : MonoBehaviour
 
     private void ComportamientoDePatrulla()
     {
-        movimiento.Patrullar();
+       // movimiento.Patrullar();
 
         // Condición para cambiar de estado: si detecta al jugador.
         if (deteccion.isPlayerDetected)
@@ -79,7 +79,7 @@ public class ControladorEnemigo : MonoBehaviour
     private void ComportamientoDePersecucion()
     {
         // Usa el movimiento de posicionamiento que discutimos
-        movimiento.PosicionarseParaAtacar(jugador);
+        //movimiento.PosicionarseParaAtacar(jugador);
 
         float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
 
@@ -115,7 +115,7 @@ public class ControladorEnemigo : MonoBehaviour
     private IEnumerator RutinaEstadoHerido()
     {
         CambiarEstado(EstadoEnemigo.Herido);
-        movimiento.Detener();
+        //movimiento.Detener();
         yield return new WaitForSeconds(0.5f); // Duración del "hitstun"
 
         // Si el jugador sigue cerca, lo perseguimos. Si no, patrullamos.
@@ -131,7 +131,7 @@ public class ControladorEnemigo : MonoBehaviour
 
     private IEnumerator RutinaEstadoAtacando()
     {
-        movimiento.Detener();
+      //  movimiento.Detener();
         ataque.EjecutarAtaque(); // Esto dispara el trigger de la animación
 
         // Esperamos a que la animación termine. Puedes ajustar este tiempo
@@ -168,7 +168,7 @@ public class ControladorEnemigo : MonoBehaviour
                 anim.SetTrigger("Herido");
                 break;
             case EstadoEnemigo.Muerto:
-                movimiento.Detener();
+               // movimiento.Detener();
                 anim.SetTrigger("Morir");
                 // Aquí podrías desactivar colliders, etc.
                 break;
