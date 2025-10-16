@@ -1,114 +1,72 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoEnemigo : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    [Header("Movimiento")]
-    [SerializeField] private float velocidad = 3f;           // Velocidad del enemigo
-    [SerializeField] private Transform puntoA;              // Primer punto de patrulla
-    [SerializeField] private Transform puntoB;             // Segundo punto de patrulla
-    [SerializeField] private float distanciaOptimaAtaque = 1.2f;
+    [Header("Referencias")]
+    public Transform player;          // Referencia al jugador
+    public Transform enemyFeet;       // Punto de pies del enemigo
+    public Transform playerFeet;      // Punto de pies del jugador
+    private Animator animator;        // Referencia al Animator
+    private SpriteRenderer spriteRenderer; // Referencia al SpriteRenderer
 
-    private Rigidbody2D rb;
-    private SpriteRenderer sprite;
-    private Vector2 destino;       // Posición a la que se mueve actualmente
-    private bool yendoHaciaB = true;
+    [Header("Parámetros")]
+    public float moveSpeed = 3f;         // Velocidad de movimiento
+    public float detectionRange = 25f;   // Rango de visión en X o Y
+    public float stopDistance = 1.5f;    // Distancia mínima antes de atacar
+    public float verticalTolerance = 0.8f; // Margen vertical (pies) para ataque
 
-    private Animator anim;
+    private bool isChasing = false; // Estado actual
 
-    void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponentInChildren<Animator>();
-        // Inicializar destino al primer punto de patrulla
-        if (puntoA != null)
-            destino = puntoA.position;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
+    private void Update()
     {
-        // Actualiza el parámetro "Velocidad" en el Animator con la velocidad real del Rigidbody
-        if (anim != null)
-        {
-            anim.SetFloat("Velocidad", rb.velocity.magnitude);
-        }
-    }
-
-    // -----------------------------
-    // Patrullar entre puntos A y B
-    // -----------------------------
-    public void Patrullar()
-    {
-        if (puntoA == null || puntoB == null)
-        {
-            Detener(); // Si no hay puntos, se detiene
+        if (player == null || enemyFeet == null || playerFeet == null)
             return;
-        }
 
-        Vector2 direccion = ((Vector2)destino - (Vector2)transform.position).normalized;
-        rb.velocity = direccion * velocidad;
+        float diffX = Mathf.Abs(player.position.x - transform.position.x);
+        float diffFeetY = Mathf.Abs(playerFeet.position.y - enemyFeet.position.y);
 
-        if (sprite != null && direccion.x != 0)
-            sprite.flipX = direccion.x < 0;
-
-        if (Vector2.Distance(transform.position, destino) < 0.1f)
+        if (diffX <= detectionRange && diffFeetY <= detectionRange)
         {
-            yendoHaciaB = !yendoHaciaB;
-            destino = yendoHaciaB ? puntoB.position : puntoA.position;
-        }
-    }
+            float distance = Vector2.Distance(transform.position, player.position);
 
-    // -----------------------------
-    // Seguir al jugador
-    // -----------------------------
-    public void PosicionarseParaAtacar(Transform jugador) // No necesitamos distanciaAtaque aquí si la obtenemos del AtaqueJugador
-    {
-        if (jugador == null)
+            // Flip según dirección del jugador
+            if (player.position.x < transform.position.x)
+                spriteRenderer.flipX = false;  // Voltear a la izquierda
+            else
+                spriteRenderer.flipX = true; // Voltear a la derecha
+
+            if (distance > stopDistance)
+            {
+                // Enemigo persigue → activar animación caminar
+                isChasing = true;
+                animator.SetBool("isWalking", true);
+
+                Vector2 direction = (player.position - transform.position).normalized;
+                transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // Está en rango de ataque
+                isChasing = false;
+                animator.SetBool("isWalking", false);
+
+                if (diffFeetY <= verticalTolerance)
+                {
+                    Debug.Log("Enemigo ataca al jugador");
+                }
+            }
+        }
+        else
         {
-            Detener();
-            return;
+            // No ve al player → volver a Idle
+            isChasing = false;
+            animator.SetBool("isWalking", false);
         }
-
-        Vector2 miPosicion = transform.position;
-        Vector2 posJugador = jugador.position;
-
-        float distanciaX = Mathf.Abs(miPosicion.x - posJugador.x);
-        float diferenciaY = miPosicion.y - posJugador.y;
-
-        Vector2 direccionMovimiento = Vector2.zero;
-
-        // Prioridad 1: Alinearse en el eje Y
-        if (Mathf.Abs(diferenciaY) > 0.1f) // Si no estamos alineados verticalmente
-        {
-            direccionMovimiento.y = Mathf.Sign(posJugador.y - miPosicion.y); // Moverse hacia la Y del jugador
-        }
-
-        // Prioridad 2: Ajustar la posición en el eje X para mantener distancia óptima
-        // Si está lejos, se acerca. Si está muy cerca, intenta mantener la distancia.
-        if (distanciaX > distanciaOptimaAtaque)
-        {
-            direccionMovimiento.x = Mathf.Sign(posJugador.x - miPosicion.x); // Moverse hacia el jugador en X
-        }
-        else if (distanciaX < distanciaOptimaAtaque * 0.8f) // Si está un poco más cerca de lo óptimo, retrocede ligeramente
-        {
-            direccionMovimiento.x = -Mathf.Sign(posJugador.x - miPosicion.x);
-        }
-        // Si ya está en la distancia óptima en X, direccionMovimiento.x se queda en 0.
-
-        rb.velocity = direccionMovimiento.normalized * velocidad; // Aplicar el movimiento
-
-        // Voltear sprite según dirección de movimiento horizontal
-        if (sprite != null && rb.velocity.x != 0)
-            sprite.flipX = rb.velocity.x < 0;
-    }
-
-    // -----------------------------
-    // Detener movimiento
-    // -----------------------------
-    public void Detener()
-    {
-        rb.velocity = Vector2.zero;
     }
 }
