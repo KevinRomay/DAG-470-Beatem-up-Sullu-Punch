@@ -1,30 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectorDialogo : MonoBehaviour
 {
-    [SerializeField] private GameObject Iconointeraccion; // Guardaremos el icono del NPC actual
-    private GameObject npcCercano;
-    //[SerializeField] private Collider2D colliderDetectarNPC;
-    //private bool JugadorCerca;
+    private TipoNPC npcCercano;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-  
         if (other.CompareTag("NPCDialogo"))
         {
-            npcCercano = other.gameObject;
-            Iconointeraccion.SetActive(true); // Muestra el icono
+            npcCercano = other.GetComponent<TipoNPC>();
+
+            // Solo activamos el icono si NO hay diálogo activo
+            if (npcCercano != null && npcCercano.IconoInteraccion != null
+                && !ManagerDialogo.Instance.DialogoActivo)
+            {
+                npcCercano.IconoInteraccion.SetActive(true);
+            }
+
             Debug.Log("NPC detectado: " + npcCercano.name);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("NPCDialogo"))
+        if (other.CompareTag("NPCDialogo") && npcCercano != null)
         {
-            Iconointeraccion.SetActive(false); // Oculta el icono
+            // Oculta el icono del NPC
+            if (npcCercano.IconoInteraccion != null)
+                npcCercano.IconoInteraccion.SetActive(false);
+
+            // Cierra el diálogo si está activo
+            if (ManagerDialogo.Instance.DialogoActivo)
+                ManagerDialogo.Instance.CerrarDialogo();
+
             npcCercano = null;
             Debug.Log("Ya no estás detectando al NPC");
         }
@@ -32,10 +41,35 @@ public class DetectorDialogo : MonoBehaviour
 
     private void Update()
     {
+        if (npcCercano == null || ManagerDialogo.Instance == null)
+            return;
 
-        if (npcCercano != null && Input.GetKeyDown(KeyCode.E))
+        // Si hay diálogo activo, aseguramos que el icono esté desactivado
+        if (ManagerDialogo.Instance.DialogoActivo)
         {
-            Debug.Log("Interacción iniciada con: " + npcCercano.name);
+            if (npcCercano.IconoInteraccion != null)
+                npcCercano.IconoInteraccion.SetActive(false);
+        }
+        else
+        {
+            // Si no hay diálogo activo y el icono está apagado, lo volvemos a activar
+            if (npcCercano.IconoInteraccion != null && !npcCercano.IconoInteraccion.activeSelf)
+                npcCercano.IconoInteraccion.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!ManagerDialogo.Instance.DialogoActivo)
+            {
+                ManagerDialogo.Instance.IniciarDialogo(npcCercano);
+            }
+            else
+            {
+                ManagerDialogo.Instance.MostrarSiguienteLinea();
+            }
         }
     }
 }
+
+
+
