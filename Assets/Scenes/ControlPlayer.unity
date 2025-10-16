@@ -366,14 +366,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1512320393, guid: 63e44a793e850ed409132121f5d2ee08, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1427,10 +1427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3990df3a225d9b240814c266d346ce7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 1412672423}
-  startTime: 30
-  currentTime: 0
-  cameraMover: {fileID: 1449388339}
 --- !u!4 &1081847918
 Transform:
   m_ObjectHideFlags: 0
@@ -2431,11 +2427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bb1616ecd1f524fb9af6ce89d3800e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  canMove: 0
-  targetPosition: {x: 0, y: 0, z: 0}
-  isMoving: 0
-  countdown: {fileID: 0}
 --- !u!114 &1449388340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,8 +2731,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688859657}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0827829, y: -2.3232546, z: -0.024115061}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0827829, y: -2.3232546, z: -0.024115063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -61,3 +61,5 @@ public class ManagerDialogo : MonoBehaviour
 
 
 
+//hacer de los npc como prefabs
+//hacer que los npc puedan dar objetos/items/potenciadores/algo
