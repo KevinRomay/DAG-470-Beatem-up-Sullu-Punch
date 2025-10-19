@@ -35,10 +35,6 @@ public class SaludEnemigo : MonoBehaviour
         vidaActual -= cantidad;
 
         // Después de bajar la vida, le avisamos al cerebro.
-        if (controlador != null)
-        {
-            controlador.InformarDañoRecibido();
-        }
 
         if (vidaActual <= 0)
         {
