@@ -59,9 +59,6 @@ public class ControladorEnemigo : MonoBehaviour
             case EstadoEnemigo.Atacando:
                 // El comportamiento de ataque ahora se gestiona con una coroutine
                 break;
-            case EstadoEnemigo.Herido:
-                // El comportamiento de herido se gestiona con una coroutine
-                break;
         }
     }
 
@@ -90,40 +87,6 @@ public class ControladorEnemigo : MonoBehaviour
         }
         // Condición para volver a PATRULLAR
         else if (!deteccion.isPlayerDetected)
-        {
-            CambiarEstado(EstadoEnemigo.Patrullando);
-        }
-    }
-    // Dentro de la clase ControladorEnemigo
-
-    // Esta función es llamada desde el script de Salud o desde un evento de daño.
-    public void InformarDañoRecibido()
-    {
-        // Si ya está muerto, no hacemos nada
-        if (salud.estaMuerto) return;
-
-        // Si estabamos atacando, interrumpimos el ataque.
-        if (rutinaDeAtaque != null)
-        {
-            StopCoroutine(rutinaDeAtaque);
-            rutinaDeAtaque = null;
-        }
-
-        StartCoroutine(RutinaEstadoHerido());
-    }
-
-    private IEnumerator RutinaEstadoHerido()
-    {
-        CambiarEstado(EstadoEnemigo.Herido);
-        movimiento.Detener();
-        yield return new WaitForSeconds(0.5f); // Duración del "hitstun"
-
-        // Si el jugador sigue cerca, lo perseguimos. Si no, patrullamos.
-        if (deteccion.isPlayerDetected)
-        {
-            CambiarEstado(EstadoEnemigo.Persiguiendo);
-        }
-        else
         {
             CambiarEstado(EstadoEnemigo.Patrullando);
         }

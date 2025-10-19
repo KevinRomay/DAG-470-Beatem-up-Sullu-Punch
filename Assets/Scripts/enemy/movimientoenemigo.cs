@@ -99,9 +99,14 @@ public class MovimientoEnemigo : MonoBehaviour
 
         rb.velocity = direccionMovimiento.normalized * velocidad; // Aplicar el movimiento
 
+        float direccionHaciaJugador = jugador.position.x - transform.position.x;
         // Voltear sprite según dirección de movimiento horizontal
-        if (sprite != null && rb.velocity.x != 0)
-            sprite.flipX = rb.velocity.x < 0;
+        // 2. Volteamos el sprite para que mire al jugador
+        if (sprite != null && direccionHaciaJugador != 0)
+        {
+            // Esta lógica asume que tu sprite original mira hacia la DERECHA
+            sprite.flipX = direccionHaciaJugador > 0;
+        }
     }
 
     // -----------------------------
