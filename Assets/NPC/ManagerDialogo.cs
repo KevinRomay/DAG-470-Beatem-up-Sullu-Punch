@@ -1,63 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using TMPro;
+//using UnityEngine;
 
-public class ManagerDialogo : MonoBehaviour
-{
-    public static ManagerDialogo Instance { get; private set; }
+//public class ManagerDialogo : MonoBehaviour
+//{
+//    public static ManagerDialogo Instance { get; private set; }
 
-    [SerializeField] private GameObject panelDialogo;
-    [SerializeField] private TMP_Text nombreNPCText;
-    [SerializeField] private TMP_Text textoDialogoText;
+//    [SerializeField] private GameObject panelDialogo;
+//    [SerializeField] private TMP_Text nombreNPCText;
+//    [SerializeField] private TMP_Text textoDialogoText;
 
-    private Queue<string> colaDialogos = new Queue<string>();
-    private bool dialogoActivo = false;
+//    private Queue<string> colaDialogos = new Queue<string>();
+//    private bool dialogoActivo = false;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+//    private void Awake()
+//    {
+//        Instance = this;
+//    }
 
-    public void IniciarDialogo(TipoNPC npc)
-    {
-        if (npc == null || npc.Lineas.Length == 0) return;
+//    public void IniciarDialogo(TipoNPC npc)
+//    {
+//        if (npc == null || npc.Lineas.Length == 0) return;
 
-        panelDialogo.SetActive(true);
-        nombreNPCText.text = npc.Nombre;
+//        panelDialogo.SetActive(true);
+//        nombreNPCText.text = npc.Nombre;
 
-        colaDialogos.Clear();
-        foreach (string linea in npc.Lineas)
-        {
-            colaDialogos.Enqueue(linea);
-        }
+//        colaDialogos.Clear();
+//        foreach (string linea in npc.Lineas)
+//        {
+//            colaDialogos.Enqueue(linea);
+//        }
 
-        dialogoActivo = true;
-        MostrarSiguienteLinea();
-    }
+//        dialogoActivo = true;
+//        MostrarSiguienteLinea();
+//    }
 
-    public void MostrarSiguienteLinea()
-    {
-        if (colaDialogos.Count == 0)
-        {
-            CerrarDialogo();
-            return;
-        }
+//    public void MostrarSiguienteLinea()
+//    {
+//        if (colaDialogos.Count == 0)
+//        {
+//            CerrarDialogo();
+//            return;
+//        }
 
-        string lineaActual = colaDialogos.Dequeue();
-        textoDialogoText.text = lineaActual;
-    }
+//        string lineaActual = colaDialogos.Dequeue();
+//        textoDialogoText.text = lineaActual;
+//    }
 
-    public void CerrarDialogo()
-    {
-        panelDialogo.SetActive(false);
-        textoDialogoText.text = "";
-        nombreNPCText.text = "";
-        dialogoActivo = false;
-    }
+//    public void CerrarDialogo()
+//    {
+//        panelDialogo.SetActive(false);
+//        textoDialogoText.text = "";
+//        nombreNPCText.text = "";
+//        dialogoActivo = false;
+//    }
 
-    public bool DialogoActivo => dialogoActivo;
-}
+//    public bool DialogoActivo => dialogoActivo;
+//}
 
 
 
