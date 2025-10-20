@@ -8,6 +8,7 @@ TagManager:
   - Cura
   - Tiempo
   - Item
+  - ItemBuff
   layers:
   - Default
   - TransparentFX

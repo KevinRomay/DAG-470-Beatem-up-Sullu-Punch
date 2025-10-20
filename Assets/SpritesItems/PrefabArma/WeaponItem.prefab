@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.324, y: 0.28466666}
+    oldSize: {x: 0.37384614, y: 0.32846153}
     newSize: {x: 0.324, y: 0.28466666}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   lifeTime: 10
   timer: 0
   damage: 10
+  armaEnManoPrefab: {fileID: 3679702727922528843, guid: 335d43913e53aa9439fd240b8c5a44e1, type: 3}
 --- !u!1 &8438053654281120452
 GameObject:
   m_ObjectHideFlags: 0
