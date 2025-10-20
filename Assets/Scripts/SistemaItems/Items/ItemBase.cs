@@ -8,7 +8,7 @@ public abstract class ItemBase : MonoBehaviour
     [SerializeField] public string itemName;
      private Sprite Icon;
     [SerializeField] public float lifeTime = 10f; // los segundos que permance en el mapa
-    [SerializeField] float timer;
+    [SerializeField]float timer;
 
     void Start()
     {
@@ -19,9 +19,15 @@ public abstract class ItemBase : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer <= 0f)
+        if (timer < 5f)
         {
-            Destroy(gameObject); // desaparece despues del tiempo
+            float alpha = Mathf.PingPong(Time.time * 5f, 1f);
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
+            //Destroy(gameObject); // desaparece despues del tiempo
+        }
+        if (timer < 0f)
+        {
+            Destroy(gameObject);
         }
     }
 
