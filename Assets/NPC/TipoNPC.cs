@@ -49,7 +49,23 @@ public class TipoNPC : MonoBehaviour
 
     public void IniciarDialogo()
     {
-        if (lineasDialogo.Length == 0 || panelDialogo == null)
+        // Si el NPC tiene una acción de tipo Cinemática, se ejecuta directamente
+        if (tipoAccion == TipoAccionNPC.Cinematica)
+        {
+            EjecutarAccion();
+            return;
+        }
+
+
+
+        // Si no hay diálogo, ejecutar directamente la acción
+        if (lineasDialogo.Length == 0)
+        {
+            EjecutarAccion(); // Ejecuta la acción asignada (dar item, abrir tienda, etc.)
+            return;
+        }
+
+        if (panelDialogo == null)
             return;
 
         // Ocultar icono mientras se muestra el diálogo
@@ -65,6 +81,7 @@ public class TipoNPC : MonoBehaviour
         indiceLinea = 0;
         dialogoActivo = true;
     }
+
 
     public void SiguienteLinea()
     {
