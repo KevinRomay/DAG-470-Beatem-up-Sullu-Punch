@@ -10,10 +10,10 @@ public class TipoNPC : MonoBehaviour
 
     public enum TipoAccionNPC
     {
-        Ninguna,        // Solo diálogo
-        DarItem,        // El NPC da un objeto
-        AbrirTienda,    // Abre la interfaz de tienda
-        Cinematica      // Activa una cinemática
+        Ninguna,
+        DarItem,
+        AbrirTienda,
+        Cinematica
     }
 
     [Header("Diálogo del NPC")]
@@ -30,6 +30,7 @@ public class TipoNPC : MonoBehaviour
 
     private int indiceLinea = 0;
     private bool dialogoActivo = false;
+    private bool accionEjecutada = false;
 
     private void Awake()
     {
@@ -40,7 +41,6 @@ public class TipoNPC : MonoBehaviour
             iconoInteraccion.SetActive(false);
     }
 
-    //  Método público para controlar el icono de interacción
     public void MostrarIcono(bool mostrar)
     {
         if (iconoInteraccion != null)
@@ -49,39 +49,33 @@ public class TipoNPC : MonoBehaviour
 
     public void IniciarDialogo()
     {
-        // Si el NPC tiene una acción de tipo Cinemática, se ejecuta directamente
+        // Si el NPC es de tipo cinematica, no muestra diálogo
         if (tipoAccion == TipoAccionNPC.Cinematica)
         {
             EjecutarAccion();
             return;
         }
 
-
-
-        // Si no hay diálogo, ejecutar directamente la acción
+        // Si no hay líneas, ejecutar directamente la acción
         if (lineasDialogo.Length == 0)
         {
-            EjecutarAccion(); // Ejecuta la acción asignada (dar item, abrir tienda, etc.)
+            EjecutarAccion();
             return;
         }
 
         if (panelDialogo == null)
             return;
 
-        // Ocultar icono mientras se muestra el diálogo
         MostrarIcono(false);
-
         panelDialogo.SetActive(true);
-
-        // Traer panel al frente en el Canvas
         panelDialogo.transform.SetAsLastSibling();
 
         textoNombre.text = nombreNPC;
         textoDialogo.text = lineasDialogo[0];
         indiceLinea = 0;
         dialogoActivo = true;
+        accionEjecutada = false;
     }
-
 
     public void SiguienteLinea()
     {
@@ -91,14 +85,15 @@ public class TipoNPC : MonoBehaviour
 
         if (indiceLinea >= lineasDialogo.Length)
         {
-            CerrarDialogo();
+            // Termina el diálogo y recién ahí ejecuta la acción
+            CerrarDialogo(true);
             return;
         }
 
         textoDialogo.text = lineasDialogo[indiceLinea];
     }
 
-    public void CerrarDialogo()
+    public void CerrarDialogo(bool finalizado = false)
     {
         if (panelDialogo != null)
             panelDialogo.SetActive(false);
@@ -107,39 +102,40 @@ public class TipoNPC : MonoBehaviour
         textoNombre.text = "";
         dialogoActivo = false;
 
-        EjecutarAccion();
-
+        // Solo ejecutar la acción si el diálogo llegó al final
+        if (finalizado && !accionEjecutada)
+        {
+            EjecutarAccion();
+            accionEjecutada = true;
+        }
     }
 
     public bool DialogoActivo => dialogoActivo;
-
+    public bool EsCinematica => tipoAccion == TipoAccionNPC.Cinematica;
 
     public void EjecutarAccion()
     {
+        if (accionEjecutada) return;
+
+        accionEjecutada = true;
+
         switch (tipoAccion)
         {
             case TipoAccionNPC.Ninguna:
                 Debug.Log("Solo diálogo, no hay acción especial.");
                 break;
-
             case TipoAccionNPC.DarItem:
-                // Mostramos mensaje en consola o UI simulando que dio un item
-                Debug.Log($"NPC dio el item");
+                Debug.Log($"NPC dio un item.");
                 break;
-
             case TipoAccionNPC.AbrirTienda:
-                // Mostramos mensaje simulando que se abrió la tienda
                 Debug.Log("Se abrió la tienda del NPC.");
                 break;
-
             case TipoAccionNPC.Cinematica:
-                // Mostramos mensaje simulando que se activó una cinemática
                 Debug.Log("Se activó una cinemática del NPC.");
                 break;
         }
     }
-
-
 }
+
 
 

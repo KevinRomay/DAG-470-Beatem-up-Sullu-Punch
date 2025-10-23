@@ -10,7 +10,15 @@ public class DetectorDialogo : MonoBehaviour
         {
             npcCercano = other.GetComponent<TipoNPC>();
             if (npcCercano != null)
-                npcCercano.MostrarIcono(true); //  Usamos el método público
+            {
+                npcCercano.MostrarIcono(true);
+
+                // Si es una cinemática, ejecuta la acción automáticamente
+                if (npcCercano.EsCinematica)
+                {
+                    npcCercano.EjecutarAccion();
+                }
+            }
         }
     }
 
@@ -18,8 +26,12 @@ public class DetectorDialogo : MonoBehaviour
     {
         if (other.CompareTag("NPCDialogo") && npcCercano != null)
         {
-            npcCercano.MostrarIcono(false); //  Usamos el método público
-            npcCercano.CerrarDialogo();
+            npcCercano.MostrarIcono(false);
+
+            // Cerrar diálogo solo si estaba activo
+            if (npcCercano.DialogoActivo)
+                npcCercano.CerrarDialogo();
+
             npcCercano = null;
         }
     }
@@ -29,6 +41,7 @@ public class DetectorDialogo : MonoBehaviour
         if (npcCercano == null)
             return;
 
+        // Mostrar icono solo si no está hablando
         npcCercano.MostrarIcono(!npcCercano.DialogoActivo);
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -40,6 +53,7 @@ public class DetectorDialogo : MonoBehaviour
         }
     }
 }
+
 
 
 
