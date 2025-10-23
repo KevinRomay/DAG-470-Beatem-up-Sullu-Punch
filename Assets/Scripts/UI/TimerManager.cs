@@ -1,13 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class TimerManager : MonoBehaviour
 {
-    public float tiempoTotal = 200f;
+    public float tiempoTotal = 100f;
     private float tiempoActual;
-    public TextMeshProUGUI textoTiempo; 
+    public float escalaTiempo = 1f / 3f;
+
+    public TextMeshProUGUI textoTiempo;
 
     void Start()
     {
@@ -19,14 +21,15 @@ public class TimerManager : MonoBehaviour
     {
         if (tiempoActual > 0)
         {
-            tiempoActual -= Time.deltaTime;
+           
+            tiempoActual -= Time.deltaTime * escalaTiempo;
             ActualizarTextoTiempo();
         }
         else
         {
             tiempoActual = 0;
             ActualizarTextoTiempo();
-            Debug.Log("Tiempo agotado!");
+            Debug.Log("⏰ Tiempo agotado!");
         }
     }
 
@@ -39,6 +42,6 @@ public class TimerManager : MonoBehaviour
 
     void ActualizarTextoTiempo()
     {
-        textoTiempo.text = "Tiempo: " + Mathf.CeilToInt(tiempoActual).ToString();
+        textoTiempo.text = "Tiempo " + Mathf.CeilToInt(tiempoActual).ToString();
     }
 }
