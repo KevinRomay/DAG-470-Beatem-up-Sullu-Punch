@@ -9,10 +9,10 @@ public class ControladorEnemigo : MonoBehaviour
     [SerializeField] public EstadoEnemigo estadoActual;
 
     // Referencias a otros scripts
-    public MovimientoEnemigo movimiento;
-    public AtaqueJugador ataque;
-    public DetectarJugador deteccion;
-    public SaludEnemigo salud;
+    MovimientoEnemigo movimiento;
+    AtaqueJugador ataque;
+    DetectarJugador deteccion;
+    SaludEnemigo salud;
     //public AnimacionEnemigo animaciones;
 
     // Referencia al jugador
@@ -128,11 +128,11 @@ public class ControladorEnemigo : MonoBehaviour
                 }
                 break;
             case EstadoEnemigo.Herido:
-                anim.SetTrigger("Herido");
+               // anim.SetTrigger("Herido");
                 break;
             case EstadoEnemigo.Muerto:
                 movimiento.Detener();
-                anim.SetTrigger("Morir");
+              //  anim.SetTrigger("Morir");
                 // Aquí podrías desactivar colliders, etc.
                 break;
         }
