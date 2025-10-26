@@ -8,10 +8,10 @@ public class ControlArmas : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    armaActual.Atacar();
-        //}
+        if (Input.GetButtonDown("Fire1"))
+        {
+            armaActual.Atacar();
+        }
     }
 
 

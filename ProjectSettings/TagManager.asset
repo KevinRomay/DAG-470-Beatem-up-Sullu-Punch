@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - "da\xF1oPersonaje"
-  - NPCDialogo
+  - Cura
+  - Tiempo
   layers:
   - Default
   - TransparentFX
