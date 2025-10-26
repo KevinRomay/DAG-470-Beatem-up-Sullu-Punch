@@ -30,10 +30,10 @@ public class MovimientoEnemigo : MonoBehaviour
     void Update()
     {
         // Actualiza el parámetro "Velocidad" en el Animator con la velocidad real del Rigidbody
-        /*if (anim != null)
+        if (anim != null)
         {
             anim.SetFloat("Velocidad", rb.velocity.magnitude);
-        }*/
+        }
     }
 
     // -----------------------------

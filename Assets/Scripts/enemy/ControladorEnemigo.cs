@@ -128,11 +128,11 @@ public class ControladorEnemigo : MonoBehaviour
                 }
                 break;
             case EstadoEnemigo.Herido:
-               // anim.SetTrigger("Herido");
+                anim.SetTrigger("Herido");
                 break;
             case EstadoEnemigo.Muerto:
                 movimiento.Detener();
-              //  anim.SetTrigger("Morir");
+                anim.SetTrigger("Morir");
                 // Aquí podrías desactivar colliders, etc.
                 break;
         }

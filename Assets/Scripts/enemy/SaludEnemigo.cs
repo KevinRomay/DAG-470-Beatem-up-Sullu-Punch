@@ -15,6 +15,7 @@ public class SaludEnemigo : MonoBehaviour
     void Awake() // Cambiamos Start por Awake para asegurar que la referencia esté lista
     {
         InicializarVida();
+        // --- AÑADE ESTA LÍNEA ---
         controlador = GetComponent<ControladorEnemigo>();
     }
 

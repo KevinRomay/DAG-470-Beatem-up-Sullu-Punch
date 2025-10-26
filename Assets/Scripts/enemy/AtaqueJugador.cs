@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
 
 // Asegúrate de que el nombre del archivo y la clase sean "AtaqueEnemigo"
 public class AtaqueJugador : MonoBehaviour
@@ -38,10 +39,11 @@ public class AtaqueJugador : MonoBehaviour
             proximoAtaquePermitido = Time.time + tiempoEntreAtaques;
 
             // Le decimos al Animator que inicie el ataque. ¡Nada más!
-            //anim.SetTrigger("Atacar");
+            anim.SetTrigger("Atacar");
         }
     }
 
+    // --- ¡ESTA ES LA FUNCIÓN CLAVE! ---
     // Este método será llamado por el Animation Event en el frame del golpe.
     // Asegúrate de que el nombre sea exacto.
     public void EventoDeDañoAnimacion()
