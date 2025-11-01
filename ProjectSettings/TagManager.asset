@@ -6,6 +6,9 @@ TagManager:
   tags:
   - "da\xF1oPersonaje"
   - NPCDialogo
+  - Tiempo
+  - Cura
+  - Escenario
   layers:
   - Default
   - TransparentFX
