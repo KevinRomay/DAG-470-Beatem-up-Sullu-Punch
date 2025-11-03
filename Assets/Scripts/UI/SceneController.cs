@@ -7,7 +7,7 @@ public class SceneController : MonoBehaviour
 {
     public void GoToCharacterSelect()
     {
-        SceneManager.LoadScene("CharacterSelect");
+        SceneManager.LoadScene("MenuPrincipal");
     }
 
     public void GoToGameScene()
