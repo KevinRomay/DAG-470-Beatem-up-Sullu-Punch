@@ -16,6 +16,10 @@ public class MovimientoEnemigo : MonoBehaviour
     [Header("Configuración de Persecución")]
     [SerializeField] private float velocidadPersecucion = 4f;
 
+    [Header("Configuración de Rodeo")]
+    [SerializeField] private float distanciaDeRodeo = 4f;
+    public float distanciaDeParada = 1.0f;
+
     // Referencias a componentes
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
@@ -95,9 +99,42 @@ public class MovimientoEnemigo : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Acción: Detener todo movimiento.
-    /// </summary>
+    public void RodearAlJugador(Transform jugador)
+    {
+        float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
+
+        if(distanciaAlJugador > distanciaDeRodeo)
+        {
+            // Moverse hacia el jugador si está demasiado lejos
+            Vector2 direccion = (jugador.position - transform.position).normalized;
+            rb.velocity = direccion * velocidadPatrulla;
+        }
+        else if (distanciaAlJugador < distanciaDeRodeo)
+        {
+            // Alejarse del jugador si está demasiado cerca
+            Vector2 direccion = (transform.position - jugador.position).normalized;
+            rb.velocity = direccion * velocidadPatrulla;
+        }
+        else
+        {
+            // Si está a la distancia correcta, detenerse
+            Detener();
+        }
+
+        float direccionHaciaJugador = jugador.position.x - transform.position.x;
+
+        if (direccionHaciaJugador < 0)
+        {
+            sprite.flipX = true; // Mirando a la izquierda (donde está el jugador)
+        }
+        else if (direccionHaciaJugador > 0)
+        {
+            sprite.flipX = false; // Mirando a la derecha (donde está el jugador)
+        }
+        
+    }
+
+
     public void Detener()
     {
         rb.velocity = Vector2.zero;
