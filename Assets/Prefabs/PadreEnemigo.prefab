@@ -234,6 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 0}
+  ataqueEnemigo: {fileID: 3245342199429035012}
+  ataqueEnemigoDistancia: {fileID: 0}
+  haVistoAlJugador: 1
 --- !u!114 &2976235590467909258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +268,8 @@ MonoBehaviour:
   puntoA: {fileID: 0}
   puntoB: {fileID: 0}
   velocidadPersecucion: 0.82
+  distanciaDeRodeo: 2
+  distanciaDeParada: 1
 --- !u!114 &3245342199429035012
 MonoBehaviour:
   m_ObjectHideFlags: 0
