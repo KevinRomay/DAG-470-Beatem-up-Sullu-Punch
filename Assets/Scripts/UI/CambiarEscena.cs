@@ -25,4 +25,12 @@ public class CambiarEscena : MonoBehaviour
     {
         SceneManager.LoadScene("PantallaDeCarga");
     }
+    public void IrAOpciones()
+    {
+        SceneManager.LoadScene("Opciones");
+    }
+    public void IrACreditos()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
 }
