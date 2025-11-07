@@ -5,142 +5,180 @@ using UnityEngine;
 
 public class ControladorEnemigo : MonoBehaviour
 {
-    
+
     [Header("Referencias (Asignar Manualmente)")]
-    // La referencia más importante. Arrastra tu GameObject "Jugador" aquí.
+
     public Transform jugador;
 
     [Header("Componentes del Enemigo")]
     public AtaqueEnemigo ataqueEnemigo;
     public AtaqueEnemigoDistancia ataqueEnemigoDistancia;
 
-     MovimientoEnemigo movimiento;
-     //AtaqueEnemigo ataque;
-     DetectarJugador deteccion;
-     SaludEnemigo salud;
+    MovimientoEnemigo movimiento;
+    //AtaqueEnemigo ataque;
+    DetectarJugador deteccion;
+    SaludEnemigo salud;
     public bool haVistoAlJugador = false;
     private bool tienePermisoDeAtacar = false;
+
+    [Header("Lógica de Persecución")]
+    [Tooltip("Distancia máxima a la que el enemigo perseguirá al jugador antes de rendirse.")]
+    public float distanciaMaximaDePersecucion = 25f; // ¡Regla #1!
+    private SpriteRenderer sprite; // ¡Regla #2!
 
     void Awake()
     {
         // Intenta encontrar los componentes automáticamente si no los asignaste en el Inspector
         if (movimiento == null) movimiento = GetComponent<MovimientoEnemigo>();
-       // if (ataque == null) ataque = GetComponent<AtaqueEnemigo>();
+        // if (ataque == null) ataque = GetComponent<AtaqueEnemigo>();
         if (deteccion == null) deteccion = GetComponent<DetectarJugador>();
         if (salud == null) salud = GetComponent<SaludEnemigo>();
+
+        sprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (sprite == null)
+        {
+            Debug.LogError("ControladorEnemigo no pudo encontrar un SpriteRenderer en sus hijos.", this.gameObject);
+        }
+
+
     }
+
+    // En ControladorEnemigo.cs
 
     void Update()
     {
-
-        // --- 1. COMPROBACIÓN DE SEGURIDAD ---
+        // --- (Tus comprobaciones de Seguridad, Muerte y Detección se quedan igual) ---
         if (jugador == null) return;
-
-        // --- 2. PRIORIDAD MÁXIMA: MUERTE ---
         if (salud.estaMuerto)
         {
-            // Si morimos, liberamos nuestro slot de ataque si lo teníamos
             if (tienePermisoDeAtacar)
             {
-                // Le avisamos al "árbitro" que nuestro slot está libre
                 GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
                 tienePermisoDeAtacar = false;
             }
             movimiento.Detener();
-            return; // Fin del Update
+            return;
         }
-
-        // --- 3. LÓGICA DE DETECCIÓN (Patrullar) ---
-        // Si no hemos visto al jugador, nos quedamos en modo Patrulla
         if (!haVistoAlJugador)
         {
             if (deteccion.isPlayerDetected)
             {
-                haVistoAlJugador = true; // ¡Lo vimos!
+                haVistoAlJugador = true;
             }
             else
             {
-                // Aún no lo hemos visto, seguimos patrullando
                 movimiento.Patrullar();
-                return; // Fin del Update
+                return;
             }
         }
 
-        // --- 4. LÓGICA DE DECISIÓN BASADA EN PERMISOS ---
-        // (Esta parte solo se ejecuta si haVistoAlJugador es true)
+        // --- (Lógica de Decisión con las nuevas reglas) ---
 
         float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
 
+        // --- REGLA #1: PÉRDIDA DE INTERÉS (se queda igual) ---
+        if (distanciaAlJugador > distanciaMaximaDePersecucion)
+        {
+            haVistoAlJugador = false;
+            if (tienePermisoDeAtacar)
+            {
+                GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
+                tienePermisoDeAtacar = false;
+            }
+            return;
+        }
+
+        // --- Definimos el tipo de enemigo y su rango UNA SOLA VEZ ---
+        bool esMelee = (ataqueEnemigo != null);
+        bool esDistancia = (ataqueEnemigoDistancia != null);
+        float miDistanciaDeAtaque = 0;
+        if (esMelee) miDistanciaDeAtaque = ataqueEnemigo.distanciaAtaque;
+        else if (esDistancia) miDistanciaDeAtaque = ataqueEnemigoDistancia.distanciaAtaque;
+
+
+        // --- Lógica de Permisos ---
         if (tienePermisoDeAtacar)
         {
             // ---- CASO A: TENGO PERMISO PARA ATACAR ----
-            // Lógica normal de Perseguir y Atacar
 
-            // Determinamos la distancia de ataque correcta
-            float miDistanciaDeAtaque = 0;
-            if (ataqueEnemigo != null)
-                miDistanciaDeAtaque = ataqueEnemigo.distanciaAtaque;
-            else if (ataqueEnemigoDistancia != null)
-                miDistanciaDeAtaque = ataqueEnemigoDistancia.distanciaAtaque;
-
-            // 1. ¿Estoy en rango?
             if (distanciaAlJugador <= miDistanciaDeAtaque)
             {
-                // Sí -> ATACAR
-                movimiento.Detener();
-                if (ataqueEnemigo != null) ataqueEnemigo.EjecutarAtaque();
-                else if (ataqueEnemigoDistancia != null) ataqueEnemigoDistancia.EjecutarAtaque();
+                // --- REGLA #2: LÍNEA DE FUEGO (se queda igual) ---
+                if (sprite.isVisible)
+                {
+                    movimiento.Detener();
+                    if (esMelee) ataqueEnemigo.EjecutarAtaque();
+                    else if (esDistancia) ataqueEnemigoDistancia.EjecutarAtaque();
+                }
+                else
+                {
+                    movimiento.Detener();
+                }
             }
             else
             {
-                // No -> PERSEGUIR
-                // Si me alejo demasiado (ej: el jugador huye), libero mi slot
-                // (Asegúrate de que 'distanciaDeParada' sea pública en MovimientoEnemigo)
+                // No estoy en rango -> PERSEGUIR
+                movimiento.PosicionarseParaAtacar(jugador);
+
                 if (distanciaAlJugador > movimiento.distanciaDeParada * 1.5f)
                 {
                     GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
                     tienePermisoDeAtacar = false;
                 }
-                movimiento.PosicionarseParaAtacar(jugador);
             }
         }
         else
         {
-            // ---- CASO B: NO TENGO PERMISO (Estoy en espera) ----
+            // ---- CASO B: NO TENGO PERMISO (¡LÓGICA CORREGIDA!) ----
 
-            // 1. ¿Estoy lo suficientemente cerca para pedir permiso?
-            if (distanciaAlJugador <= movimiento.distanciaDeParada)
+            if (esMelee)
             {
-                // Sí. Pido permiso al "árbitro"
-                tienePermisoDeAtacar = GestorDeAgresividad.Instancia.SolicitarSlotDeAtaque(this);
-
-                // Si pedí permiso PERO no me lo dieron (slots llenos)...
-                if (!tienePermisoDeAtacar)
+                // ---- Lógica de espera para MELEE ----
+                if (distanciaAlJugador <= movimiento.distanciaDeParada)
                 {
-                    // ...entonces me detengo y espero mi turno.
-                    movimiento.Detener();
+                    tienePermisoDeAtacar = GestorDeAgresividad.Instancia.SolicitarSlotDeAtaque(this);
+                    if (!tienePermisoDeAtacar)
+                    {
+                        movimiento.Detener(); // Slots llenos, me detengo y espero
+                    }
                 }
-                // (Si SÍ me dieron permiso, 'tienePermisoDeAtacar' será true
-                // y el próximo frame entraré en el "CASO A" y atacaré).
+                else
+                {
+                    movimiento.PosicionarseParaAtacar(jugador); // Estoy lejos, me acerco
+                }
             }
-            else
+            else if (esDistancia)
             {
-                // No. Estoy lejos. Mi trabajo es ACERCARME (Perseguir).
-                // ¡Este es el cambio clave!
-                movimiento.PosicionarseParaAtacar(jugador);
+                // ---- Lógica de espera para DISTANCIA (Corregida) ----
+
+                // 1. ¿Estoy en mi "zona dorada" (lejos, pero en rango)?
+                // (Asegúrate de que 'distanciaDeRodeo' sea pública en MovimientoEnemigo)
+                if (distanciaAlJugador <= miDistanciaDeAtaque && distanciaAlJugador >= movimiento.distanciaDeRodeo)
+                {
+                    // Sí. Pido permiso para atacar.
+                    tienePermisoDeAtacar = GestorDeAgresividad.Instancia.SolicitarSlotDeAtaque(this);
+                    if (!tienePermisoDeAtacar)
+                    {
+                        movimiento.Detener(); // Slots llenos, me detengo y espero
+                    }
+                }
+                else
+                {
+                    // No. Estoy fuera de mi zona (muy lejos o muy cerca).
+                    // Me reposiciono usando la lógica de "Rodear" (MANTENERME LEJOS).
+                    movimiento.RodearAlJugador(jugador);
+                }
             }
-
         }
+    }
 
 
-
-
-            // Debug.Log(tienePermisoDeAtacar);
-
-
-        }
+    // Debug.Log(tienePermisoDeAtacar);
     public void ActivarPersecusion()
     {
-        haVistoAlJugador = true;
+        {
+            haVistoAlJugador = true;
+        }
     }
 }

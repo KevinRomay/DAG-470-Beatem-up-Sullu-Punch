@@ -13,27 +13,22 @@ public class GestorDeAgresividad : MonoBehaviour
 
     private void Awake()
     {
-        // La lógica correcta:
-        // "Si la Instancia YA EXISTE (no es null) Y no soy yo mismo..."
+
         if (Instancia != null && Instancia != this)
         {
-            // "...entonces soy un duplicado. Destruirme."
             Destroy(gameObject);
         }
         else
         {
-            // "...si no, significa que soy el primero. Yo soy la Instancia."
             Instancia = this;
-            Debug.Log("¡GESTOR DE AGRESIVIDAD ESTÁ VIVO Y LISTO!");
+            //Debug.Log("¡GESTOR DE AGRESIVIDAD ESTÁ VIVO Y LISTO!");
         }
     }
 
     private void OnDestroy()
     {
-        // Si este objeto era la Instancia...
         if (Instancia == this)
         {
-            // ... "grita" en la consola que está muriendo.
           //  Debug.LogError("¡¡ALERTA!! ¡El GestorDeAgresividad (Instancia) acaba de ser DESTRUIDO!");
             Instancia = null; // Limpiamos la instancia
         }

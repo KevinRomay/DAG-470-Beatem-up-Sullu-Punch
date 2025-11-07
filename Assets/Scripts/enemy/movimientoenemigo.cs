@@ -15,10 +15,10 @@ public class MovimientoEnemigo : MonoBehaviour
 
     [Header("Configuración de Persecución")]
     [SerializeField] private float velocidadPersecucion = 4f;
+    public float distanciaDeParada = 1.0f; // <-- PÚBLICA
 
     [Header("Configuración de Rodeo")]
-    [SerializeField] private float distanciaDeRodeo = 4f;
-    public float distanciaDeParada = 1.0f;
+    public float distanciaDeRodeo = 4f; // <-- PÚBLICA
 
     // Referencias a componentes
     private Rigidbody2D rb;
@@ -41,24 +41,18 @@ public class MovimientoEnemigo : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Acción: Moverse entre el punto A y el punto B.
-    /// </summary>
+
     public void Patrullar()
     {
-        // Si no hay puntos de patrulla, no hace nada y se detiene
         if (puntoA == null || puntoB == null)
         {
             Detener();
             return;
         }
 
-        // 1. Moverse hacia el destino actual
         Vector2 direccion = (destinoActual - (Vector2)transform.position).normalized;
         rb.velocity = direccion * velocidadPatrulla;
 
-        // 2. Voltear el sprite según la dirección del MOVIMIENTO
-        // (En patrulla, sí queremos que mire hacia donde camina)
         if (direccion.x < 0)
         {
             sprite.flipX = true; // Mirando a la izquierda
@@ -77,17 +71,13 @@ public class MovimientoEnemigo : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Acción: Perseguir al jugador y voltear para mirarlo.
-    /// </summary>
     public void PosicionarseParaAtacar(Transform jugador)
     {
-        // 1. Moverse hacia el jugador
+
         Vector2 direccion = (jugador.position - transform.position).normalized;
         rb.velocity = direccion * velocidadPersecucion;
 
-        // 2. Voltear el sprite para que siempre mire al JUGADOR
-        // (Lógica que corregimos antes)
+
         float direccionHaciaJugador = jugador.position.x - transform.position.x;
         if (direccionHaciaJugador < 0)
         {
