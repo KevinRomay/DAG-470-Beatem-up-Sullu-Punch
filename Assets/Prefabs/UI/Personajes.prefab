@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4850115189081945535}
   - component: {fileID: 6291572588157897274}
   m_Layer: 5
-  m_Name: SeleccionPersonajes
+  m_Name: Personajes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
