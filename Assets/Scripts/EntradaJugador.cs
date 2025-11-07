@@ -9,7 +9,9 @@ public class EntradaJugador : MonoBehaviour
 
     public InputAction a_atacar;
     public InputAction a_interactuar;
-
+    public InputAction a_golpear;
+    public InputAction a_patear;
+    public InputAction a_lanzar;
     public CombateJugador combate;
     //referencia a interacciones jugador
 
@@ -17,6 +19,9 @@ public class EntradaJugador : MonoBehaviour
     {
         a_interactuar = acciones.FindAction("Interact");
         a_atacar = acciones.FindAction("Attack");
+        a_golpear = acciones.FindAction("Punch");
+        a_patear = acciones.FindAction("Kick");
+        a_lanzar = acciones.FindAction("Throw");
     }
 
     // Start is called before the first frame update
