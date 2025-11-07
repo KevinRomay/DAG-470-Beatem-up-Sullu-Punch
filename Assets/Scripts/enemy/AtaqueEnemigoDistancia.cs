@@ -29,12 +29,22 @@ public class AtaqueEnemigoDistancia : MonoBehaviour
     private void DispararProyectil()
     {
 
-        if (prefabProyectil == null || puntoDisparo == null || jugador == null) 
-        { 
-          Debug.LogWarning("Faltan referencias en AtaqueEnemigoDistancia");
+        if (prefabProyectil == null || puntoDisparo == null || jugador == null)
+        {
+            Debug.LogWarning("Faltan referencias en AtaqueEnemigoDistancia");
             return;
         }
         Debug.Log("Disparando proyectil hacia el jugador");
+
+        // --- ¡¡ESTE ES EL CÓDIGO QUE FALTABA!! ---
+
+        // 1. Calcular la rotación para apuntar al jugador
+        Vector2 direccion = (jugador.position - puntoDisparo.position).normalized;
+        float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+        Quaternion rotacion = Quaternion.Euler(0, 0, angulo);
+
+        // 2. Crear (Instanciar) la bala en la posición y rotación correctas
+        Instantiate(prefabProyectil, puntoDisparo.position, rotacion);
     }
 
 }

@@ -15,10 +15,10 @@ public class MovimientoEnemigo : MonoBehaviour
 
     [Header("Configuración de Persecución")]
     [SerializeField] private float velocidadPersecucion = 4f;
+    public float distanciaDeParada = 1.0f; // <-- PÚBLICA
 
     [Header("Configuración de Rodeo")]
-    [SerializeField] private float distanciaDeRodeo = 4f;
-    public float distanciaDeParada = 1.0f;
+    public float distanciaDeRodeo = 4f; // <-- PÚBLICA
 
     // Referencias a componentes
     private Rigidbody2D rb;
