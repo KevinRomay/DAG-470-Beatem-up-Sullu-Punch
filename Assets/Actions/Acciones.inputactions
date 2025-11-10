@@ -72,7 +72,11 @@
                 {
                     "name": "Throw",
                     "type": "Button",
+<<<<<<< Updated upstream
                     "id": "dc084de4-6617-4102-8b74-0ea046b47490",
+=======
+                    "id": "ba53559d-ef86-4978-b21b-018dd437ab88",
+>>>>>>> Stashed changes
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -379,6 +383,7 @@
                 },
                 {
                     "name": "",
+<<<<<<< Updated upstream
                     "id": "3924384f-4db9-469a-96fc-461421ac39b7",
                     "path": "<Keyboard>/l",
                     "interactions": "",
@@ -391,6 +396,9 @@
                 {
                     "name": "",
                     "id": "1ecfb5eb-43f6-4f78-8a10-2de6a2cb6772",
+=======
+                    "id": "5b44537f-e148-4cb3-87ac-8a711ac826bf",
+>>>>>>> Stashed changes
                     "path": "",
                     "interactions": "",
                     "processors": "",
@@ -398,6 +406,20 @@
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< Updated upstream
+=======
+                },
+                {
+                    "name": "",
+                    "id": "fd3fb70c-97ce-4d53-ad6e-7d771b5a391c",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+>>>>>>> Stashed changes
                 }
             ]
         },

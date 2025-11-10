@@ -45,4 +45,8 @@ public class SaludJugador : MonoBehaviour
             Debug.Log(gameObject.name + " ha sido derrotado.");
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
