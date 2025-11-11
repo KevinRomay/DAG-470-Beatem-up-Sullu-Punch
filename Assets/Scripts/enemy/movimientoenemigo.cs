@@ -2,116 +2,129 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Gestiona todo el movimiento físico del enemigo.
+/// Ejecuta las acciones de patrullar, perseguir o detenerse.
+/// </summary>
 public class MovimientoEnemigo : MonoBehaviour
 {
-    [Header("Movimiento")]
-    [SerializeField] private float velocidad = 3f;           // Velocidad del enemigo
-    [SerializeField] private Transform puntoA;              // Primer punto de patrulla
-    [SerializeField] private Transform puntoB;             // Segundo punto de patrulla
-    [SerializeField] private float distanciaOptimaAtaque = 1.2f;
+    [Header("Configuración de Patrulla")]
+    [SerializeField] private float velocidadPatrulla = 2f;
+    [SerializeField] private Transform puntoA;
+    [SerializeField] private Transform puntoB;
 
+    [Header("Configuración de Persecución")]
+    [SerializeField] private float velocidadPersecucion = 4f;
+    public float distanciaDeParada = 1.0f; // <-- PÚBLICA
+
+    [Header("Configuración de Rodeo")]
+    public float distanciaDeRodeo = 4f; // <-- PÚBLICA
+
+    // Referencias a componentes
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    private Vector2 destino;       // Posición a la que se mueve actualmente
-    private bool yendoHaciaB = true;
 
-    private Animator anim;
+    // Variables internas para la patrulla
+    private Vector2 destinoActual;
+    private bool yendoHaciaB = true;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        // Buscamos el SpriteRenderer en los hijos (por si el sprite es un objeto hijo)
         sprite = GetComponentInChildren<SpriteRenderer>();
-        anim = GetComponentInChildren<Animator>();
-        // Inicializar destino al primer punto de patrulla
-        if (puntoA != null)
-            destino = puntoA.position;
-    }
 
-    void Update()
-    {
-        // Actualiza el parámetro "Velocidad" en el Animator con la velocidad real del Rigidbody
-        if (anim != null)
+        // Asignar el primer destino de la patrulla
+        if (puntoA != null)
         {
-            anim.SetFloat("Velocidad", rb.velocity.magnitude);
+            destinoActual = puntoA.position;
         }
     }
 
-    // -----------------------------
-    // Patrullar entre puntos A y B
-    // -----------------------------
+
     public void Patrullar()
     {
         if (puntoA == null || puntoB == null)
-        {
-            Detener(); // Si no hay puntos, se detiene
-            return;
-        }
-
-        Vector2 direccion = ((Vector2)destino - (Vector2)transform.position).normalized;
-        rb.velocity = direccion * velocidad;
-
-        if (sprite != null && direccion.x != 0)
-            sprite.flipX = direccion.x < 0;
-
-        if (Vector2.Distance(transform.position, destino) < 0.1f)
-        {
-            yendoHaciaB = !yendoHaciaB;
-            destino = yendoHaciaB ? puntoB.position : puntoA.position;
-        }
-    }
-
-    // -----------------------------
-    // Seguir al jugador
-    // -----------------------------
-    public void PosicionarseParaAtacar(Transform jugador) // No necesitamos distanciaAtaque aquí si la obtenemos del AtaqueJugador
-    {
-        if (jugador == null)
         {
             Detener();
             return;
         }
 
-        Vector2 miPosicion = transform.position;
-        Vector2 posJugador = jugador.position;
+        Vector2 direccion = (destinoActual - (Vector2)transform.position).normalized;
+        rb.velocity = direccion * velocidadPatrulla;
 
-        float distanciaX = Mathf.Abs(miPosicion.x - posJugador.x);
-        float diferenciaY = miPosicion.y - posJugador.y;
-
-        Vector2 direccionMovimiento = Vector2.zero;
-
-        // Prioridad 1: Alinearse en el eje Y
-        if (Mathf.Abs(diferenciaY) > 0.1f) // Si no estamos alineados verticalmente
+        if (direccion.x < 0)
         {
-            direccionMovimiento.y = Mathf.Sign(posJugador.y - miPosicion.y); // Moverse hacia la Y del jugador
+            sprite.flipX = true; // Mirando a la izquierda
+        }
+        else if (direccion.x > 0)
+        {
+            sprite.flipX = false; // Mirando a la derecha
         }
 
-        // Prioridad 2: Ajustar la posición en el eje X para mantener distancia óptima
-        // Si está lejos, se acerca. Si está muy cerca, intenta mantener la distancia.
-        if (distanciaX > distanciaOptimaAtaque)
+        // 3. Comprobar si llegó al destino
+        if (Vector2.Distance(transform.position, destinoActual) < 0.1f)
         {
-            direccionMovimiento.x = Mathf.Sign(posJugador.x - miPosicion.x); // Moverse hacia el jugador en X
-        }
-        else if (distanciaX < distanciaOptimaAtaque * 0.8f) // Si está un poco más cerca de lo óptimo, retrocede ligeramente
-        {
-            direccionMovimiento.x = -Mathf.Sign(posJugador.x - miPosicion.x);
-        }
-        // Si ya está en la distancia óptima en X, direccionMovimiento.x se queda en 0.
-
-        rb.velocity = direccionMovimiento.normalized * velocidad; // Aplicar el movimiento
-
-        float direccionHaciaJugador = jugador.position.x - transform.position.x;
-        // Voltear sprite según dirección de movimiento horizontal
-        // 2. Volteamos el sprite para que mire al jugador
-        if (sprite != null && direccionHaciaJugador != 0)
-        {
-            // Esta lógica asume que tu sprite original mira hacia la DERECHA
-            sprite.flipX = direccionHaciaJugador > 0;
+            // Cambiar de destino
+            yendoHaciaB = !yendoHaciaB;
+            destinoActual = yendoHaciaB ? puntoB.position : puntoA.position;
         }
     }
 
-    // -----------------------------
-    // Detener movimiento
-    // -----------------------------
+    public void PosicionarseParaAtacar(Transform jugador)
+    {
+
+        Vector2 direccion = (jugador.position - transform.position).normalized;
+        rb.velocity = direccion * velocidadPersecucion;
+
+
+        float direccionHaciaJugador = jugador.position.x - transform.position.x;
+        if (direccionHaciaJugador < 0)
+        {
+            sprite.flipX = true; // Mirando a la izquierda (donde está el jugador)
+        }
+        else if (direccionHaciaJugador > 0)
+        {
+            sprite.flipX = false; // Mirando a la derecha (donde está el jugador)
+        }
+    }
+
+    public void RodearAlJugador(Transform jugador)
+    {
+        float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
+
+        if(distanciaAlJugador > distanciaDeRodeo)
+        {
+            // Moverse hacia el jugador si está demasiado lejos
+            Vector2 direccion = (jugador.position - transform.position).normalized;
+            rb.velocity = direccion * velocidadPatrulla;
+        }
+        else if (distanciaAlJugador < distanciaDeRodeo)
+        {
+            // Alejarse del jugador si está demasiado cerca
+            Vector2 direccion = (transform.position - jugador.position).normalized;
+            rb.velocity = direccion * velocidadPatrulla;
+        }
+        else
+        {
+            // Si está a la distancia correcta, detenerse
+            Detener();
+        }
+
+        float direccionHaciaJugador = jugador.position.x - transform.position.x;
+
+        if (direccionHaciaJugador < 0)
+        {
+            sprite.flipX = true; // Mirando a la izquierda (donde está el jugador)
+        }
+        else if (direccionHaciaJugador > 0)
+        {
+            sprite.flipX = false; // Mirando a la derecha (donde está el jugador)
+        }
+        
+    }
+
+
     public void Detener()
     {
         rb.velocity = Vector2.zero;
