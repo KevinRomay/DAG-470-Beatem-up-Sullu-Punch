@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/enemy/AtaqueEnemigoDistancia.cs.meta
+guid: b9013c557bf892a47a63f7491481269d
+========
+guid: 41cb19b08a604f64d8abdc9284d983c6
+>>>>>>>> DiegoFz:Assets/Scripts/UI/AudioManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
