@@ -39,8 +39,4 @@ public class AtaqueDistanciaJugador : MonoBehaviour
             }
         }
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

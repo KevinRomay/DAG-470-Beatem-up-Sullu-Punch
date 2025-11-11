@@ -73,9 +73,13 @@
                     "name": "Throw",
                     "type": "Button",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     "id": "dc084de4-6617-4102-8b74-0ea046b47490",
 =======
                     "id": "ba53559d-ef86-4978-b21b-018dd437ab88",
+>>>>>>> Stashed changes
+=======
+                    "id": "e1195c05-c4d5-464a-ab69-ce728946330d",
 >>>>>>> Stashed changes
                     "expectedControlType": "",
                     "processors": "",
@@ -384,6 +388,7 @@
                 {
                     "name": "",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     "id": "3924384f-4db9-469a-96fc-461421ac39b7",
                     "path": "<Keyboard>/l",
                     "interactions": "",
@@ -399,6 +404,9 @@
 =======
                     "id": "5b44537f-e148-4cb3-87ac-8a711ac826bf",
 >>>>>>> Stashed changes
+=======
+                    "id": "223c0d1d-63b1-4677-980d-d40c671158aa",
+>>>>>>> Stashed changes
                     "path": "",
                     "interactions": "",
                     "processors": "",
@@ -407,11 +415,18 @@
                     "isComposite": false,
                     "isPartOfComposite": false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
                 },
                 {
                     "name": "",
                     "id": "fd3fb70c-97ce-4d53-ad6e-7d771b5a391c",
+=======
+                },
+                {
+                    "name": "",
+                    "id": "88cfc867-730c-461a-89ae-bab36c6eb1b7",
+>>>>>>> Stashed changes
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
@@ -419,6 +434,9 @@
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 }
             ]
