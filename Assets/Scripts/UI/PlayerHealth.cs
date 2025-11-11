@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (vidaActual == 0)
         {
+            Destroy(gameObject);
             Debug.Log("¡El jugador ha muerto!");
         }
     }

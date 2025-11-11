@@ -1,154 +1,184 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControladorEnemigo : MonoBehaviour
 {
-    // Estados del enemigo
-    public enum EstadoEnemigo { Idle, Patrullando, Persiguiendo, Atacando, Herido, Muerto }
-    [SerializeField] public EstadoEnemigo estadoActual;
 
-    // Referencias a otros scripts
+    [Header("Referencias (Asignar Manualmente)")]
+
+    public Transform jugador;
+
+    [Header("Componentes del Enemigo")]
+    public AtaqueEnemigo ataqueEnemigo;
+    public AtaqueEnemigoDistancia ataqueEnemigoDistancia;
+
     MovimientoEnemigo movimiento;
-    AtaqueJugador ataque;
+    //AtaqueEnemigo ataque;
     DetectarJugador deteccion;
     SaludEnemigo salud;
-    //public AnimacionEnemigo animaciones;
+    public bool haVistoAlJugador = false;
+    private bool tienePermisoDeAtacar = false;
 
-    // Referencia al jugador
-    public Transform jugador;
-    private Coroutine rutinaDeAtaque = null;
+    [Header("Lógica de Persecución")]
+    [Tooltip("Distancia máxima a la que el enemigo perseguirá al jugador antes de rendirse.")]
+    public float distanciaMaximaDePersecucion = 25f; // ¡Regla #1!
+    private SpriteRenderer sprite; // ¡Regla #2!
 
-    // Animator
-    private Animator anim;
-    private void Awake()
+    void Awake()
     {
-        movimiento = GetComponent<MovimientoEnemigo>();
-        ataque = GetComponent<AtaqueJugador>();
-        deteccion = GetComponent<DetectarJugador>();
-        salud = GetComponent<SaludEnemigo>();
-        anim = GetComponentInChildren<Animator>();
-    }
-    void Start()
-    {
+        // Intenta encontrar los componentes automáticamente si no los asignaste en el Inspector
+        if (movimiento == null) movimiento = GetComponent<MovimientoEnemigo>();
+        // if (ataque == null) ataque = GetComponent<AtaqueEnemigo>();
+        if (deteccion == null) deteccion = GetComponent<DetectarJugador>();
+        if (salud == null) salud = GetComponent<SaludEnemigo>();
 
-        jugador = GameObject.FindGameObjectWithTag("Player").transform;
-        CambiarEstado(EstadoEnemigo.Patrullando);
+        sprite = GetComponentInChildren<SpriteRenderer>();
+
+        if (sprite == null)
+        {
+            Debug.LogError("ControladorEnemigo no pudo encontrar un SpriteRenderer en sus hijos.", this.gameObject);
+        }
+
+
     }
 
-    // Dentro de la clase ControladorEnemigo
+    // En ControladorEnemigo.cs
 
     void Update()
     {
-        // Si está muerto, no hace nada más.
+        // --- (Tus comprobaciones de Seguridad, Muerte y Detección se quedan igual) ---
+        if (jugador == null) return;
         if (salud.estaMuerto)
         {
-            if (estadoActual != EstadoEnemigo.Muerto) CambiarEstado(EstadoEnemigo.Muerto);
+            if (tienePermisoDeAtacar)
+            {
+                GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
+                tienePermisoDeAtacar = false;
+            }
+            movimiento.Detener();
             return;
         }
-
-        // La máquina de estados principal. Cada estado llama a su propia lógica.
-        switch (estadoActual)
+        if (!haVistoAlJugador)
         {
-            case EstadoEnemigo.Patrullando:
-                ComportamientoDePatrulla();
-                break;
-            case EstadoEnemigo.Persiguiendo:
-                ComportamientoDePersecucion();
-                break;
-            case EstadoEnemigo.Atacando:
-                // El comportamiento de ataque ahora se gestiona con una coroutine
-                break;
+            if (deteccion.isPlayerDetected)
+            {
+                haVistoAlJugador = true;
+            }
+            else
+            {
+                movimiento.Patrullar();
+                return;
+            }
         }
-    }
 
-    private void ComportamientoDePatrulla()
-    {
-        movimiento.Patrullar();
-
-        // Condición para cambiar de estado: si detecta al jugador.
-        if (deteccion.isPlayerDetected)
-        {
-            CambiarEstado(EstadoEnemigo.Persiguiendo);
-        }
-    }
-
-    private void ComportamientoDePersecucion()
-    {
-        // Usa el movimiento de posicionamiento que discutimos
-        movimiento.PosicionarseParaAtacar(jugador);
+        // --- (Lógica de Decisión con las nuevas reglas) ---
 
         float distanciaAlJugador = Vector2.Distance(transform.position, jugador.position);
 
-        // Condición para cambiar a ATACAR
-        if (distanciaAlJugador <= ataque.distanciaAtaque)
+        // --- REGLA #1: PÉRDIDA DE INTERÉS (se queda igual) ---
+        if (distanciaAlJugador > distanciaMaximaDePersecucion)
         {
-            CambiarEstado(EstadoEnemigo.Atacando);
+            haVistoAlJugador = false;
+            if (tienePermisoDeAtacar)
+            {
+                GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
+                tienePermisoDeAtacar = false;
+            }
+            return;
         }
-        // Condición para volver a PATRULLAR
-        else if (!deteccion.isPlayerDetected)
+
+        // --- Definimos el tipo de enemigo y su rango UNA SOLA VEZ ---
+        bool esMelee = (ataqueEnemigo != null);
+        bool esDistancia = (ataqueEnemigoDistancia != null);
+        float miDistanciaDeAtaque = 0;
+        if (esMelee) miDistanciaDeAtaque = ataqueEnemigo.distanciaAtaque;
+        else if (esDistancia) miDistanciaDeAtaque = ataqueEnemigoDistancia.distanciaAtaque;
+
+
+        // --- Lógica de Permisos ---
+        if (tienePermisoDeAtacar)
         {
-            CambiarEstado(EstadoEnemigo.Patrullando);
-        }
-    }
+            // ---- CASO A: TENGO PERMISO PARA ATACAR ----
 
-    private IEnumerator RutinaEstadoAtacando()
-    {
-        movimiento.Detener();
-        ataque.EjecutarAtaque(); // Esto dispara el trigger de la animación
-
-        // Esperamos a que la animación termine. Puedes ajustar este tiempo
-        // para que coincida con la duración de tu animación de ataque.
-        yield return new WaitForSeconds(1.0f);
-
-        // Después de atacar, volvemos a perseguir
-        CambiarEstado(EstadoEnemigo.Persiguiendo);
-        rutinaDeAtaque = null;
-    }
-    // Dentro de la clase ControladorEnemigo
-
-    public void CambiarEstado(EstadoEnemigo nuevoEstado)
-    {
-        if (estadoActual == nuevoEstado) return;
-
-        estadoActual = nuevoEstado;
-
-        // Actualizamos el Animator
-        switch (estadoActual)
-        {
-            case EstadoEnemigo.Patrullando:
-            case EstadoEnemigo.Persiguiendo:
-                // La animación de caminar se controla por la velocidad en MovimientoEnemigo
-                break;
-            case EstadoEnemigo.Atacando:
-                // Iniciamos la rutina de ataque SÓLO si no se está ejecutando ya.
-                if (rutinaDeAtaque == null)
+            if (distanciaAlJugador <= miDistanciaDeAtaque)
+            {
+                // --- REGLA #2: LÍNEA DE FUEGO (se queda igual) ---
+                if (sprite.isVisible)
                 {
-                    rutinaDeAtaque = StartCoroutine(RutinaEstadoAtacando());
+                    movimiento.Detener();
+                    if (esMelee) ataqueEnemigo.EjecutarAtaque();
+                    else if (esDistancia) ataqueEnemigoDistancia.EjecutarAtaque();
                 }
-                break;
-            case EstadoEnemigo.Herido:
-                anim.SetTrigger("Herido");
-                break;
-            case EstadoEnemigo.Muerto:
-                movimiento.Detener();
-                anim.SetTrigger("Morir");
-                // Aquí podrías desactivar colliders, etc.
-                break;
+                else
+                {
+                    movimiento.Detener();
+                }
+            }
+            else
+            {
+                // No estoy en rango -> PERSEGUIR
+                movimiento.PosicionarseParaAtacar(jugador);
+
+                if (distanciaAlJugador > movimiento.distanciaDeParada * 1.5f)
+                {
+                    GestorDeAgresividad.Instancia.LiberarSlotDeAtaque(this);
+                    tienePermisoDeAtacar = false;
+                }
+            }
+        }
+        else
+        {
+            // ---- CASO B: NO TENGO PERMISO (¡LÓGICA CORREGIDA!) ----
+
+            if (esMelee)
+            {
+                // ---- Lógica de espera para MELEE ----
+                if (distanciaAlJugador <= movimiento.distanciaDeParada)
+                {
+                    tienePermisoDeAtacar = GestorDeAgresividad.Instancia.SolicitarSlotDeAtaque(this);
+                    if (!tienePermisoDeAtacar)
+                    {
+                        movimiento.Detener(); // Slots llenos, me detengo y espero
+                    }
+                }
+                else
+                {
+                    movimiento.PosicionarseParaAtacar(jugador); // Estoy lejos, me acerco
+                }
+            }
+            else if (esDistancia)
+            {
+                // ---- Lógica de espera para DISTANCIA (Corregida) ----
+
+                // 1. ¿Estoy en mi "zona dorada" (lejos, pero en rango)?
+                // (Asegúrate de que 'distanciaDeRodeo' sea pública en MovimientoEnemigo)
+                if (distanciaAlJugador <= miDistanciaDeAtaque && distanciaAlJugador >= movimiento.distanciaDeRodeo)
+                {
+                    // Sí. Pido permiso para atacar.
+                    tienePermisoDeAtacar = GestorDeAgresividad.Instancia.SolicitarSlotDeAtaque(this);
+                    if (!tienePermisoDeAtacar)
+                    {
+                        movimiento.Detener(); // Slots llenos, me detengo y espero
+                    }
+                }
+                else
+                {
+                    // No. Estoy fuera de mi zona (muy lejos o muy cerca).
+                    // Me reposiciono usando la lógica de "Rodear" (MANTENERME LEJOS).
+                    movimiento.RodearAlJugador(jugador);
+                }
+            }
         }
     }
 
 
-    // en el ControladorEnemigo cuando reciba daño.
-
-
-
-    public void RecibirDaño(float cantidad)
+    // Debug.Log(tienePermisoDeAtacar);
+    public void ActivarPersecusion()
     {
-        salud.RecibirDaño(cantidad);
-        if (!salud.estaMuerto)
         {
-            CambiarEstado(EstadoEnemigo.Herido);
+            haVistoAlJugador = true;
         }
     }
 }
