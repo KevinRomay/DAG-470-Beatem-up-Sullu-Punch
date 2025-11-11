@@ -108,11 +108,6 @@ public class TipoNPC : MonoBehaviour
             EjecutarAccion();
             accionEjecutada = true;
         }
-        if (finalizado)
-        {
-            // Si el jugador sigue cerca, volver a mostrar el icono
-            MostrarIcono(true);
-        }
     }
 
     public bool DialogoActivo => dialogoActivo;
