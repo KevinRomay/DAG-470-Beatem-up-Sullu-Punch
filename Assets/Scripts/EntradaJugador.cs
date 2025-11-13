@@ -9,6 +9,7 @@ public class EntradaJugador : MonoBehaviour
 
     public InputAction a_atacar;
     public InputAction a_interactuar;
+    public InputAction a_lanzar;
 
     public CombateJugador combate;
     //referencia a interacciones jugador
@@ -17,6 +18,7 @@ public class EntradaJugador : MonoBehaviour
     {
         a_interactuar = acciones.FindAction("Interact");
         a_atacar = acciones.FindAction("Attack");
+        a_lanzar = acciones.FindAction("Throw");
     }
 
     // Start is called before the first frame update
@@ -38,6 +40,12 @@ public class EntradaJugador : MonoBehaviour
         if (a_interactuar.WasPressedThisFrame() )
         {
             //Tener metodo interactuar
+        }
+        if (a_lanzar.WasPressedThisFrame())
+        {
+        AtaqueDistanciaJugador lanzamiento = GetComponent<AtaqueDistanciaJugador>();
+        if (lanzamiento != null)
+           lanzamiento.Lanzar();
         }
     }
 }
