@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/UI/AudioManager.cs.meta
-guid: d95d6a36a7c71334abe7addcf6acdfb1
-========
 guid: b9013c557bf892a47a63f7491481269d
->>>>>>>> main:Assets/Scripts/enemy/AtaqueEnemigoDistancia.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
