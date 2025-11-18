@@ -9,25 +9,16 @@ public class EntradaJugador : MonoBehaviour
 
     public InputAction a_atacar;
     public InputAction a_interactuar;
+    public InputAction a_lanzar;
 
     public CombateJugador combate;
     //referencia a interacciones jugador
-
-    private DetectorJugadorNPC npcActivo; // NPC que notificó que está cerca
-
 
     private void OnEnable()
     {
         a_interactuar = acciones.FindAction("Interact");
         a_atacar = acciones.FindAction("Attack");
-
-        DetectorJugadorNPC.OnJugadorCerca += RegistrarNPCActivo;
-
-    }
-
-    private void OnDisable()
-    {
-        DetectorJugadorNPC.OnJugadorCerca -= RegistrarNPCActivo;
+        a_lanzar = acciones.FindAction("Throw");
     }
 
     // Start is called before the first frame update
@@ -48,13 +39,13 @@ public class EntradaJugador : MonoBehaviour
         //VALIDAR QUE HAYA UN NPC INTERACTUABLE CERCA
         if (a_interactuar.WasPressedThisFrame() )
         {
-            npcActivo.IntentarInteractuar();
             //Tener metodo interactuar
-
         }
-    }
-    private void RegistrarNPCActivo(DetectorJugadorNPC detector)
-    {
-        npcActivo = detector;
+        if (a_lanzar.WasPressedThisFrame())
+        {
+        AtaqueDistanciaJugador lanzamiento = GetComponent<AtaqueDistanciaJugador>();
+        if (lanzamiento != null)
+           lanzamiento.Lanzar();
+        }
     }
 }
