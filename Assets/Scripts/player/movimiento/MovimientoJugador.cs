@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 {
-    public enum MovementState
-    {
-        Normal,     // jugador puede moverse
-        Stunned,    // aturdido, no puede moverse ni actuar
-        Busy,       // ocupado (ej. recogiendo, interactuando)
-        Cinematic,  // control deshabilitado por cinemática
-        Attacking   // atacando, bloqueo de movimiento
-    }
+
 
     [Header("Configuración de movimiento")]
     public float velocidad = 5f;
@@ -83,3 +76,11 @@ public class MovimientoJugador : MonoBehaviour
     // Utilitario: pregunta rápida si el jugador puede moverse
     public bool CanMove() => currentState == MovementState.Normal;
 }
+    public enum MovementState
+    {
+        Normal,     // jugador puede moverse
+        Stunned,    // aturdido, no puede moverse ni actuar
+        Busy,       // ocupado (ej. recogiendo, interactuando)
+        Cinematic,  // control deshabilitado por cinemática
+        Attacking   // atacando, bloqueo de movimiento
+    }
