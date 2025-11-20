@@ -14,7 +14,7 @@ public class EntradaJugador : MonoBehaviour
     public CombateJugador combate;
     //referencia a interacciones jugador
 
-    private DetectorJugadorNPC npcActivo; // NPC que notificó que está cerca
+    private DetectorJugadorNPC npcActivo; // NPC que notificï¿½ que estï¿½ cerca
 
     private void OnEnable()
     {
@@ -23,10 +23,13 @@ public class EntradaJugador : MonoBehaviour
 
         a_atacar = acciones.FindAction("Attack");
         a_lanzar = acciones.FindAction("Throw");
+
+        a_lanzar.Enable();
     }
 
     private void OnDisable()
     {
+        a_lanzar.Disable();
         DetectorJugadorNPC.OnJugadorCerca -= RegistrarNPCActivo;
     }
 

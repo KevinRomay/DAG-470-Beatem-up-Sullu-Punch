@@ -6,12 +6,12 @@ public class ProyectilJugador : MonoBehaviour
 {
     public float velocidad = 10f;
     public float daño = 10f;
-    public float vidaUtil = 3f;
+    public float vidaUtil = 2f;
 
     private Rigidbody2D rb;
     [HideInInspector]
     public Vector2 direccion = Vector2.right;
-
+    
     // Start is called before the first frame update
     void Start()
     {
