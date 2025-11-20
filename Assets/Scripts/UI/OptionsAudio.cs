@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class OptionsAudio : MonoBehaviour
 {
-    public AudioMixer mixer; // Mezclador asignado en inspector
+    public AudioMixer mixer;  // Mezclador asignado en el Inspector
     public Slider musicSlider;
     public Slider sfxSlider;
 
@@ -25,7 +25,7 @@ public class OptionsAudio : MonoBehaviour
         SetMusicVolume(musicVal);
         SetSFXVolume(sfxVal);
 
-        // Añadir listeners a sliders para actualizar en tiempo real
+        // Listeners para actualizar en tiempo real
         if (musicSlider != null) musicSlider.onValueChanged.AddListener(SetMusicVolume);
         if (sfxSlider != null) sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
@@ -44,10 +44,21 @@ public class OptionsAudio : MonoBehaviour
         PlayerPrefs.SetFloat(SFX_KEY, linear);
     }
 
+    /// <summary>
+    /// Convierte un valor lineal (0..1) a decibeles con curva suave.
+    /// Max dB limitado a -10 para evitar que la música/SFX sea demasiado fuerte.
+    /// </summary>
     private float LinearToDecibel(float linear)
     {
-        if (linear <= 0.0001f) return -80f; // evitar log(0)
-        return Mathf.Log10(linear) * 20f;
+        linear = Mathf.Clamp(linear, 0.0001f, 1f);  // evitar log(0)
+
+        float minDb = -80f;   // silencio
+        float maxDb = -10f;   // límite de volumen máximo (antes 0 dB)
+
+        // curva de sensibilidad más natural
+        float curved = Mathf.Pow(linear, 1.5f);
+
+        return Mathf.Lerp(minDb, maxDb, curved);
     }
 
     private void OnDisable()
@@ -55,4 +66,5 @@ public class OptionsAudio : MonoBehaviour
         PlayerPrefs.Save();
     }
 }
+
 
