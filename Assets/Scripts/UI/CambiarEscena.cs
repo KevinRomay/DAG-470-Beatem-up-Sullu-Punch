@@ -9,28 +9,12 @@ public class CambiarEscena : MonoBehaviour
     {
         SceneManager.LoadScene("MenuPrincipal");
     }
-    public void IrAModoDeJuego()
-    {
-        SceneManager.LoadScene("ModoDeJuego");
-    }
-    public void IrANiveles()
-    {
-        SceneManager.LoadScene("Niveles");
-    }
-    public void IrASeleccionarPersonaje()
-    {
-        SceneManager.LoadScene("SeleccionPersonajes");
-    }
     public void IrAPantallaCarga()
     {
         SceneManager.LoadScene("PantallaDeCarga");
     }
-    public void IrAOpciones()
+    public void IrAPruebasTrancisiones()
     {
-        SceneManager.LoadScene("Opciones");
-    }
-    public void IrACreditos()
-    {
-        SceneManager.LoadScene("Creditos");
+        SceneManager.LoadScene("PruebaTransiciones");
     }
 }
