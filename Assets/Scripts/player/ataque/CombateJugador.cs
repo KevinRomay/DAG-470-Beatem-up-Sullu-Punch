@@ -37,6 +37,9 @@ public class CombateJugador : MonoBehaviour
     {
         if (!zonaAtaque.enabled)
             return;
+        float diferenciaY = Mathf.Abs(transform.position.y - other.transform.position.y);
+            if (diferenciaY > 0.15f)
+            return;    
 
         SaludEnemigo enemigo = other.GetComponent<SaludEnemigo>();
 
