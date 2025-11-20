@@ -37,6 +37,7 @@ public class DetectorJugadorNPC : MonoBehaviour
         {
             jugadorCerca = false;
             npc.MostrarIcono(false);
+            npc.CerrarDialogo(false);
         }
     }
 

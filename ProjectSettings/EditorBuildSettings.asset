@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PantallaDeInicio.unity
     guid: 0119142de1cd03e4d99808c55eed8680
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/PruebaTransiciones.unity
     guid: 6e8941a8cc26be349bc48822c2fa37ee
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
