@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PantallaCargaController : MonoBehaviour
 {
-    public string escenaDestino = "GameScene"; // Nombre exacto de la escena siguiente
+    public string escenaDestino = "PruebaTrancisiones"; // Nombre exacto de la escena siguiente
     public float tiempoEspera = 5f; // segundos
 
     void Start()
