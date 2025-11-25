@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Cinemachine;
+using UnityEngine.Playables;
 public class CambiarSeccionNivel : MonoBehaviour
 {
     [SerializeField] private Transform posPersonaje;
@@ -11,6 +12,12 @@ public class CambiarSeccionNivel : MonoBehaviour
     [SerializeField] private Transform posSalida;
     [SerializeField] private Transform posObjetivo;
     [SerializeField] private MovimientoJugador movJugador;
+    [SerializeField] private Collider2D collJugador;
+
+    [SerializeField] private CinemachineVirtualCamera camSiguienteSeccion;
+
+    [SerializeField] private PlayableDirector cinemtica;
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,7 +35,7 @@ public class CambiarSeccionNivel : MonoBehaviour
         StartCoroutine(FadeScreen(1));
         yield return new WaitForSeconds(1f);
        
-       
+        collJugador.enabled = false;
         StartCoroutine(MoverASalida());
         yield return new WaitForSeconds(4f);
     }
@@ -43,9 +50,12 @@ public class CambiarSeccionNivel : MonoBehaviour
         }
 
         posPersonaje.position = posObjetivo.position;
+        camSiguienteSeccion.Priority = 20;
+        yield return new WaitForSeconds(2f);
         StartCoroutine(FadeScreen(-1));
-        movJugador.SetState(MovementState.Normal);
-        canvas.SetActive(false);
+        //movJugador.SetState(MovementState.Normal);
+        collJugador.enabled = true;
+        cinemtica.Play();
     }
     
     IEnumerator FadeScreen(int direction)
@@ -68,8 +78,10 @@ public class CambiarSeccionNivel : MonoBehaviour
                 Color colorActual = imagenTransicion.color;
                 colorActual.a -= Time.deltaTime / 2;
                 imagenTransicion.color = colorActual;
+                 
                 yield return null;
             }
+            canvas.SetActive(false);
         }
         
     }

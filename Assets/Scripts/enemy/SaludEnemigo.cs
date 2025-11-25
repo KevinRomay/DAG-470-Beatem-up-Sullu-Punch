@@ -4,44 +4,44 @@ using UnityEngine;
 
 /// <summary>
 /// Gestiona la salud del enemigo.
-/// Recibe daño y reporta si el enemigo está muerto.
+/// Recibe daï¿½o y reporta si el enemigo estï¿½ muerto.
 /// </summary>
 public class SaludEnemigo : MonoBehaviour
 {
-    [Header("Configuración de Salud")]
-    public float vidaMaxima = 100f;
+    [Header("Configuraciï¿½n de Salud")]
+    [SerializeField] private float vidaMaxima = 100f;
 
-    // Esta variable es leída por otros scripts (como el Controlador)
+    // Esta variable es leï¿½da por otros scripts (como el Controlador)
     [HideInInspector]
     public bool estaMuerto = false;
 
     // Variable interna para llevar la cuenta
-    private float vidaActual;
+    [SerializeField] private float vidaActual;
 
     void Start()
     {
-        // Al empezar, el enemigo tiene la vida al máximo
+        // Al empezar, el enemigo tiene la vida al mï¿½ximo
         vidaActual = vidaMaxima;
         estaMuerto = false;
     }
 
     /// <summary>
-    /// Método público para que otros scripts (como un proyectil o el ataque del jugador)
-    /// puedan infligir daño a este enemigo.
+    /// Mï¿½todo pï¿½blico para que otros scripts (como un proyectil o el ataque del jugador)
+    /// puedan infligir daï¿½o a este enemigo.
     /// </summary>
-    /// <param name="cantidad">La cantidad de daño recibido.</param>
-    public void RecibirDaño(float cantidad)
+    /// <param name="cantidad">La cantidad de daï¿½o recibido.</param>
+    public void RecibirDaÃ±o(float cantidad)
     {
-        // Si ya está muerto, no puede recibir más daño.
+        // Si ya estï¿½ muerto, no puede recibir mï¿½s daï¿½o.
         if (estaMuerto)
         {
             return;
         }
 
-        // Restamos el daño a la vida actual
+        // Restamos el daï¿½o a la vida actual
         vidaActual -= cantidad;
 
-        // Comprobamos si el daño ha matado al enemigo
+        // Comprobamos si el daï¿½o ha matado al enemigo
         if (vidaActual <= 0)
         {
             vidaActual = 0; // Evitamos que la vida sea negativa
