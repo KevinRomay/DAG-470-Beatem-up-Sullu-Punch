@@ -10,9 +10,9 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("CharacterSelect");
     }
 
-    public void GoToGameScene()
+    public void GoToPruebaTransiciones()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("PruebaTransiciones");
     }
 
     public void GoToMainMenu()
