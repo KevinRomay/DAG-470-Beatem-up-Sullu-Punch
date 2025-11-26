@@ -555,8 +555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de957cb3a50f8694fb98038960cb0a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escenaDestino: Prueba Trancisiones
-  tiempoEspera: 3
+  escenaDestino: GameScene
+  tiempoEspera: 5
 --- !u!4 &639892630
 Transform:
   m_ObjectHideFlags: 0

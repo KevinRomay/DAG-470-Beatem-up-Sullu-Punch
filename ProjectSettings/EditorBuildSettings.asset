@@ -9,13 +9,28 @@ EditorBuildSettings:
     path: Assets/Scenes/PantallaDeInicio.unity
     guid: 0119142de1cd03e4d99808c55eed8680
   - enabled: 1
+    path: Assets/Scenes/PruebaTransiciones.unity
+    guid: 6e8941a8cc26be349bc48822c2fa37ee
+  - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
     guid: ae5cce12e62931a469fb78abf5f3cd45
+  - enabled: 1
+    path: Assets/Scenes/ModoDeJuego.unity
+    guid: 6864874bea10c8b47a277e91bbafab98
+  - enabled: 1
+    path: Assets/Scenes/SeleccionPersonajes.unity
+    guid: 806f37fe376e6bb4b952a2becb4d3c07
   - enabled: 1
     path: Assets/Scenes/PantallaDeCarga.unity
     guid: eb254acaa41282f4e8a36f9a70f415f8
   - enabled: 1
-    path: Assets/Scenes/PruebaTransiciones.unity
-    guid: 6e8941a8cc26be349bc48822c2fa37ee
+    path: Assets/Scenes/Niveles.unity
+    guid: 59d71fd4f19d69f428625ec615bed647
+  - enabled: 1
+    path: Assets/Scenes/Opciones.unity
+    guid: eff600620d58d634b9eadf5a10ed0635
+  - enabled: 1
+    path: Assets/Scenes/Creditos.unity
+    guid: 36a3e2888346d284c9960550db0181d6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e9d90415e204a924cac65ef2cd2269fb, type: 3}
