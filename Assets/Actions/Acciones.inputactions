@@ -81,6 +81,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Kick",
+                    "type": "Button",
+                    "id": "0d847c0f-4246-451e-8145-4e0b0ccdeef0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -386,7 +395,7 @@
 <<<<<<< Updated upstream
                     "id": "3924384f-4db9-469a-96fc-461421ac39b7",
                     "path": "<Keyboard>/l",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Throw",
@@ -407,6 +416,7 @@
                     "isComposite": false,
                     "isPartOfComposite": false
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
                 },
                 {
@@ -417,6 +427,19 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+>>>>>>> Stashed changes
+=======
+                },
+                {
+                    "name": "",
+                    "id": "08363d61-7e6e-426b-a8eb-60c3b54f9e40",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
 >>>>>>> Stashed changes

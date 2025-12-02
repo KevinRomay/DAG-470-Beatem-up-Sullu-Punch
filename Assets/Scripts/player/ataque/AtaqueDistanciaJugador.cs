@@ -10,10 +10,23 @@ public class AtaqueDistanciaJugador : MonoBehaviour
     public float tiempoEntreLanzamientos = 0.4f;
 
     private float proximoLanzamiento = 0f;
+<<<<<<< Updated upstream
+=======
+    private float umbralY = 0.15f;
+    private bool proyectilUsado = false;
+
+    private bool inputListo = false;
+    private float retrasoInput = 0.1f;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke(nameof(ActivarInput), retrasoInput);
+    }
+
+    private void ActivarInput()
+    {
+      inputListo = true;
     }
 
     // Update is called once per frame
@@ -23,6 +36,13 @@ public class AtaqueDistanciaJugador : MonoBehaviour
     }
     public void Lanzar()
     {
+<<<<<<< Updated upstream
+=======
+      if (!inputListo)
+      return;
+        if (proyectilUsado)
+            return;
+>>>>>>> Stashed changes
         if (Time.time < proximoLanzamiento)
             return;
 

@@ -5,8 +5,13 @@ using UnityEngine;
 public class ProyectilJugador : MonoBehaviour
 {
     public float velocidad = 10f;
+<<<<<<< Updated upstream
     public float daño = 10f;
     public float vidaUtil = 3f;
+=======
+    public float daño = 50f;
+    public float vidaUtil = 1f;
+>>>>>>> Stashed changes
 
     private Rigidbody2D rb;
     [HideInInspector]

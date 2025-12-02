@@ -10,6 +10,7 @@ public class EntradaJugador : MonoBehaviour
     public InputAction a_atacar;
     public InputAction a_interactuar;
     public InputAction a_lanzar;
+    public InputAction a_patear;
 
     public CombateJugador combate;
     //referencia a interacciones jugador
@@ -19,6 +20,19 @@ public class EntradaJugador : MonoBehaviour
         a_interactuar = acciones.FindAction("Interact");
         a_atacar = acciones.FindAction("Attack");
         a_lanzar = acciones.FindAction("Throw");
+<<<<<<< Updated upstream
+=======
+        a_patear = acciones.FindAction("Kick");
+        
+        a_patear.Enable(); 
+    }
+
+    private void OnDisable()
+    {
+        a_lanzar.Disable();
+        a_patear.Disable(); 
+        DetectorJugadorNPC.OnJugadorCerca -= RegistrarNPCActivo;
+>>>>>>> Stashed changes
     }
 
     // Start is called before the first frame update
@@ -41,8 +55,13 @@ public class EntradaJugador : MonoBehaviour
         {
             //Tener metodo interactuar
         }
+<<<<<<< Updated upstream
         if (a_lanzar.WasPressedThisFrame())
         { 
+=======
+        if (a_lanzar.triggered)
+        {
+>>>>>>> Stashed changes
         AtaqueDistanciaJugador lanzamiento = GetComponent<AtaqueDistanciaJugador>();
             if (lanzamiento != null)
                 lanzamiento.Lanzar();
@@ -52,6 +71,10 @@ public class EntradaJugador : MonoBehaviour
         AtaqueDistanciaJugador lanzamiento = GetComponent<AtaqueDistanciaJugador>();
             if (lanzamiento != null)
                 lanzamiento.Lanzar();
+        }
+        if (a_patear.WasPressedThisFrame())
+        {
+           combate.Patear();
         }
     }
 }
