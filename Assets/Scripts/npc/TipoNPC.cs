@@ -8,6 +8,8 @@ public class TipoNPC : MonoBehaviour
     [SerializeField] private string nombreNPC = "NPC sin nombre";
     [SerializeField] private GameObject iconoInteraccion;
 
+    [SerializeField] private ItemSpawner itemSpawner;
+
     public enum TipoAccionNPC
     {
         Ninguna,
@@ -49,6 +51,13 @@ public class TipoNPC : MonoBehaviour
 
     public void IniciarDialogo()
     {
+
+        if (tipoAccion == TipoAccionNPC.DarItem && accionEjecutada)
+        {
+            Debug.Log("El NPC ya ha dado su item, no puede dar otro.");
+            return;
+        }
+
         // Si el NPC es de tipo cinematica, no muestra diálogo
         if (tipoAccion == TipoAccionNPC.Cinematica)
         {
@@ -130,7 +139,18 @@ public class TipoNPC : MonoBehaviour
                 Debug.Log("Solo diálogo, no hay acción especial.");
                 break;
             case TipoAccionNPC.DarItem:
-                Debug.Log($"NPC dio un item.");
+
+                //if(accionEjecutada)return;
+                //accionEjecutada = true;
+                Debug.Log("El NPC dio un item al jugador.");
+                if (itemSpawner != null)
+                {
+                    itemSpawner.SpawnItem();
+                }
+                else
+                {
+                    Debug.LogWarning("El ItemSpawner no está asignado en el NPC.");
+                }
                 break;
             case TipoAccionNPC.AbrirTienda:
                 Debug.Log("Se abrió la tienda del NPC.");
