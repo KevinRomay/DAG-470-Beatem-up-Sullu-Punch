@@ -1,9 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class TipoNPC : MonoBehaviour
 {
+
     [Header("Datos del NPC")]
     [SerializeField] private string nombreNPC = "NPC sin nombre";
     [SerializeField] private GameObject iconoInteraccion;
@@ -13,14 +16,15 @@ public class TipoNPC : MonoBehaviour
         Ninguna,
         DarItem,
         AbrirTienda,
-        Cinematica
+        Cinematica,
+        Automatico
     }
 
-    [Header("Di�logo del NPC")]
+    [Header("Diálogo del NPC")]
     [TextArea(2, 6)]
     [SerializeField] private string[] lineasDialogo;
 
-    [Header("Acci�n al interactuar")]
+    [Header("Acción al interactuar")]
     [SerializeField] private TipoAccionNPC tipoAccion = TipoAccionNPC.Ninguna;
 
     [Header("Referencias UI locales")]
@@ -28,9 +32,20 @@ public class TipoNPC : MonoBehaviour
     [SerializeField] private TMP_Text textoNombre;
     [SerializeField] private TMP_Text textoDialogo;
 
+
+    [Header("Animación del panel")]
+    [SerializeField] private float duracionAnimacion = 0.3f; // tiempo de animación
+    [SerializeField] private Vector3 escalaMax = Vector3.one; // tamaño final del panel
+
+
     private int indiceLinea = 0;
     private bool dialogoActivo = false;
     private bool accionEjecutada = false;
+
+    public TipoAccionNPC TipoAccion => tipoAccion;
+
+    // SortingGroup cache para la actualización dinámica
+    private SortingGroup sortingGroup;
 
     private void Awake()
     {
@@ -39,6 +54,9 @@ public class TipoNPC : MonoBehaviour
 
         if (iconoInteraccion != null)
             iconoInteraccion.SetActive(false);
+
+        // Cachear el SortingGroup del NPC (puede estar en el mismo GameObject o en hijos)
+        sortingGroup = GetComponentInChildren<SortingGroup>();
     }
 
     public void MostrarIcono(bool mostrar)
@@ -49,14 +67,14 @@ public class TipoNPC : MonoBehaviour
 
     public void IniciarDialogo()
     {
-        // Si el NPC es de tipo cinematica, no muestra di�logo
+        // Si el NPC es de tipo cinematica, no muestra diálogo
         if (tipoAccion == TipoAccionNPC.Cinematica)
         {
             EjecutarAccion();
             return;
         }
 
-        // Si no hay l�neas, ejecutar directamente la acci�n
+        // Si no hay líneas, ejecutar directamente la acción
         if (lineasDialogo.Length == 0)
         {
             EjecutarAccion();
@@ -67,14 +85,9 @@ public class TipoNPC : MonoBehaviour
             return;
 
         MostrarIcono(false);
-        panelDialogo.SetActive(true);
+        MostrarIcono(false);
         panelDialogo.transform.SetAsLastSibling();
-
-        textoNombre.text = nombreNPC;
-        textoDialogo.text = lineasDialogo[0];
-        indiceLinea = 0;
-        dialogoActivo = true;
-        accionEjecutada = false;
+        StartCoroutine(MostrarPanel());
     }
 
     public void SiguienteLinea()
@@ -85,7 +98,7 @@ public class TipoNPC : MonoBehaviour
 
         if (indiceLinea >= lineasDialogo.Length)
         {
-            // Termina el di�logo y reci�n ah� ejecuta la acci�n
+            // Termina el diálogo y recién ahí ejecuta la acción
             CerrarDialogo(true);
             return;
         }
@@ -95,25 +108,74 @@ public class TipoNPC : MonoBehaviour
 
     public void CerrarDialogo(bool finalizado = false)
     {
-        if (panelDialogo != null)
-            panelDialogo.SetActive(false);
-
-        textoDialogo.text = "";
-        textoNombre.text = "";
         dialogoActivo = false;
 
-        // Solo ejecutar la acci�n si el di�logo lleg� al final
+        // Solo ejecutar la acción si el diálogo llegó al final
         if (finalizado && !accionEjecutada)
         {
             EjecutarAccion();
             accionEjecutada = true;
         }
-        if (finalizado)
+
+        // Inicia animación de cierre SOLO si el panel está activo
+        if (panelDialogo != null && panelDialogo.activeSelf)
         {
-            // Si el jugador sigue cerca, volver a mostrar el icono
-            MostrarIcono(true);
+            StartCoroutine(OcultarPanel());
         }
+
+        //Si el jugador sigue cerca, mostrar el icono
+        if (finalizado && tipoAccion != TipoAccionNPC.Automatico)
+            MostrarIcono(true);
     }
+
+    private IEnumerator MostrarPanel()
+    {
+        panelDialogo.SetActive(true);
+        panelDialogo.transform.localScale = Vector3.zero; // inicio desde 0
+        float tiempo = 0f;
+
+        while (tiempo < duracionAnimacion)
+        {
+            tiempo += Time.deltaTime;
+            float t = tiempo / duracionAnimacion;
+            panelDialogo.transform.localScale = Vector3.Lerp(Vector3.zero, escalaMax, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
+
+        panelDialogo.transform.localScale = escalaMax;
+
+        // Mostrar el texto después de la animación
+        textoNombre.text = nombreNPC;
+        textoDialogo.text = lineasDialogo[0];
+        indiceLinea = 0;
+        dialogoActivo = true;
+        accionEjecutada = false;
+    }
+
+    private IEnumerator OcultarPanel()
+    {
+        float tiempo = 0f;
+        Vector3 inicio = panelDialogo.transform.localScale;
+
+        while (tiempo < duracionAnimacion)
+        {
+            tiempo += Time.deltaTime;
+            float t = tiempo / duracionAnimacion;
+            panelDialogo.transform.localScale = Vector3.Lerp(inicio, Vector3.zero, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
+
+        panelDialogo.transform.localScale = Vector3.zero;
+        panelDialogo.SetActive(false);
+        textoDialogo.text = "";
+        textoNombre.text = "";
+
+        // Ahora sí mostramos el icono si corresponde
+        if (tipoAccion != TipoAccionNPC.Automatico)
+            MostrarIcono(true);
+    }
+
+
 
     public bool DialogoActivo => dialogoActivo;
     public bool EsCinematica => tipoAccion == TipoAccionNPC.Cinematica;
@@ -127,20 +189,69 @@ public class TipoNPC : MonoBehaviour
         switch (tipoAccion)
         {
             case TipoAccionNPC.Ninguna:
-                Debug.Log("Solo di�logo, no hay acci�n especial.");
+                Debug.Log("Solo diálogo, no hay acción especial.");
                 break;
             case TipoAccionNPC.DarItem:
                 Debug.Log($"NPC dio un item.");
                 break;
             case TipoAccionNPC.AbrirTienda:
-                Debug.Log("Se abri� la tienda del NPC.");
+                Debug.Log("Se abrió la tienda del NPC.");
                 break;
             case TipoAccionNPC.Cinematica:
-                Debug.Log("Se activ� una cinem�tica del NPC.");
+                Debug.Log("Se activó una cinemática del NPC.");
                 break;
         }
     }
+
+
+
+    /// <summary>
+    /// Actualiza el sorting order del NPC en relación al jugador.
+    /// Requiere que el jugador y el NPC tengan `SortingGroup`. 
+    /// Lógica: si el jugador está por debajo (y por tanto debe aparecer en primer plano),
+    /// el NPC toma `playerOrder - 1`. Si el jugador está por encima, NPC toma `playerOrder + 1`.
+    /// </summary>
+    /// <param name="jugadorTransform">Transform del jugador</param>
+    /// <param name="playerSortingGroup">SortingGroup del jugador (si se conoce, evita GetComponent)</param>
+    /// <param name="offset">Offset adicional de orden si necesitas ajustar finamente</param>
+    public void ActualizarOrdenSprite(Transform jugadorTransform, SortingGroup playerSortingGroup = null, int offset = 0)
+    {
+        if (sortingGroup == null)
+            return; // no hay SortingGroup en el NPC
+
+        if (jugadorTransform == null)
+            return;
+
+        // Obtener SortingGroup del jugador si no se pasó
+        if (playerSortingGroup == null)
+            playerSortingGroup = jugadorTransform.GetComponentInChildren<SortingGroup>();
+
+        if (playerSortingGroup == null)
+            return; // ambos deben tener SortingGroup según tu especificación
+
+        // Sincronizar capa y calcular orden relativo
+        sortingGroup.sortingLayerID = playerSortingGroup.sortingLayerID;
+        int playerOrder = playerSortingGroup.sortingOrder;
+
+        float npcY = transform.position.y;
+        float playerY = jugadorTransform.position.y;
+
+        int desiredOrder;
+
+        // Si el jugador está por debajo (Y menor) debe aparecer en primer plano -> playerOrder mayor que NPC
+        if (playerY < npcY)
+            desiredOrder = playerOrder - 1;
+        else
+            desiredOrder = playerOrder + 1;
+
+        desiredOrder += offset;
+
+        sortingGroup.sortingOrder = desiredOrder;
+    }
+
 }
+
+
 
 
 
