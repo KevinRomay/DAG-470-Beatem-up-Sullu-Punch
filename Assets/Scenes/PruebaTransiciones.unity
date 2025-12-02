@@ -1204,6 +1204,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FFNPC
       objectReference: {fileID: 0}
+    - target: {fileID: 8751908938301828962, guid: 93005dc3e2f0f084e857f6019974979e, type: 3}
+      propertyPath: tipoAccion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751908938301828962, guid: 93005dc3e2f0f084e857f6019974979e, type: 3}
+      propertyPath: itemSpawner
+      value: 
+      objectReference: {fileID: 1259471120}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3278,6 +3286,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225917412}
   m_CullTransparentMesh: 1
+--- !u!1 &1259471119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259471121}
+  - component: {fileID: 1259471120}
+  m_Layer: 0
+  m_Name: ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1259471120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259471119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261a7ed6bee06c146b478e074febbad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleItemPrefabs:
+  - {fileID: 3305415529553271885, guid: bd6d95bbe7cacff4887e585252b8dbfa, type: 3}
+  - {fileID: 8726328586718515872, guid: 93679548d5ff9f24989b459a45b14e41, type: 3}
+  - {fileID: 5448003382842989128, guid: c0cc19222131fd44c9769547bde5202d, type: 3}
+  - {fileID: 5251152654553971519, guid: 7bed38efdeb19f64a9768e7ba280f1c9, type: 3}
+--- !u!4 &1259471121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259471119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.77, y: -3.256, z: -1.8458115}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1299577752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3636,7 +3693,7 @@ Transform:
   m_GameObject: {fileID: 1449388334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0998783, y: -3.17099, z: -11.8}
+  m_LocalPosition: {x: -4.1005874, y: -3.17099, z: -11.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5802,6 +5859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a76ffaed78c8924caf5e8dba735320b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movJugador: {fileID: 0}
+  vagonetaObj: {fileID: 0}
 --- !u!114 &2072478941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7989,3 +8048,4 @@ SceneRoots:
   - {fileID: 2069195171}
   - {fileID: 2072478943}
   - {fileID: 309014570}
+  - {fileID: 1259471121}
