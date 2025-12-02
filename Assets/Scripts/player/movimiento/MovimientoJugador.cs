@@ -30,10 +30,10 @@ public class MovimientoJugador : MonoBehaviour
     public string paramSpeed = "Speed";
     [Tooltip("Nombre del parámetro bool que indica carrera.")]
     public string paramIsRunning = "IsRunning";
-    [Tooltip("Nombre del parámetro float para dirección X (opcional).")]
-    public string paramMoveX = "MoveX";
-    [Tooltip("Nombre del parámetro float para dirección Y (opcional).")]
-    public string paramMoveY = "MoveY";
+    //[Tooltip("Nombre del parámetro float para dirección X (opcional).")]
+    //public string paramMoveX = "MoveX";
+    //[Tooltip("Nombre del parámetro float para dirección Y (opcional).")]
+    //public string paramMoveY = "MoveY";
     [Tooltip("Trigger para el inicio del salto.")]
     public string paramJumpStart = "JumpStart";
     [Tooltip("Bool que indica que está cayendo.")]
@@ -52,6 +52,9 @@ public class MovimientoJugador : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movimiento;
+
+    //Flip
+    private bool mirandoDerecha = true;
 
     // Estado de carrera/salto
     private bool isRunning = false;
@@ -91,6 +94,7 @@ public class MovimientoJugador : MonoBehaviour
         // Leer entrada de movimiento (horizontal y vertical)
         float movX = Input.GetAxisRaw("Horizontal");
         float movY = Input.GetAxisRaw("Vertical");
+        Flip(movX);
 
         Vector2 raw = new Vector2(movX, movY);
 
@@ -232,8 +236,8 @@ public class MovimientoJugador : MonoBehaviour
         animator.SetFloat(paramSpeed, speedPercent, speedDampTime, Time.deltaTime);
 
         // Opcional: pasar dirección cruda para blend-trees 2D/4-direcciones
-        if (!string.IsNullOrEmpty(paramMoveX)) animator.SetFloat(paramMoveX, rawDirection.x);
-        if (!string.IsNullOrEmpty(paramMoveY)) animator.SetFloat(paramMoveY, rawDirection.y);
+        //if (!string.IsNullOrEmpty(paramMoveX)) animator.SetFloat(paramMoveX, rawDirection.x);
+        //if (!string.IsNullOrEmpty(paramMoveY)) animator.SetFloat(paramMoveY, rawDirection.y);
 
         // Estado de running
         animator.SetBool(paramIsRunning, isRunning);
@@ -253,6 +257,20 @@ public class MovimientoJugador : MonoBehaviour
             animator.SetTrigger(paramLand);
         }
         // punto para reproducir efectos/sonidos de aterrizaje
+    }
+
+    private void Flip(float direccionX)
+    {
+        if (direccionX > 0 && !mirandoDerecha)
+        {
+            visualRoot.localScale = new Vector3(1, 1, 1);
+            mirandoDerecha = true;
+        }
+        else if (direccionX < 0 && mirandoDerecha)
+        {
+            visualRoot.localScale = new Vector3(-1, 1, 1);
+            mirandoDerecha = false;
+        }
     }
 }
 
