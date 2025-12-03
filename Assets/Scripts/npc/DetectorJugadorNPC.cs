@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.Rendering;
+using System;
 
 [RequireComponent(typeof(Collider2D))]
 public class DetectorJugadorNPC : MonoBehaviour
@@ -22,31 +21,13 @@ public class DetectorJugadorNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorCerca = true;
+            npc.MostrarIcono(true);
 
-            // Si NO es automatico, mostrar icono
-            if (npc.TipoAccion != TipoNPC.TipoAccionNPC.Automatico)
-                npc.MostrarIcono(true);
-
+            // Notifica al jugador
             OnJugadorCerca?.Invoke(this);
 
-            npc.ActualizarOrdenSprite(other.transform, other.GetComponentInChildren<SortingGroup>());
-
-            // Si es cinematica, ejecuta accion aparte
             if (npc.EsCinematica)
                 npc.EjecutarAccion();
-
-            //  Si es automatico, iniciar dialogo de inmediato
-            if (npc.TipoAccion == TipoNPC.TipoAccionNPC.Automatico)
-                npc.IniciarDialogo();
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        // Mantener actualizado el orden mientras el jugador se mueva dentro del trigger
-        if (other.CompareTag("Player"))
-        {
-            npc.ActualizarOrdenSprite(other.transform, other.GetComponentInChildren<SortingGroup>());
         }
     }
 
@@ -64,17 +45,10 @@ public class DetectorJugadorNPC : MonoBehaviour
     {
         if (!jugadorCerca || npc == null) return;
 
-        // Los automaticos no usan interacción manual
-        if (npc.TipoAccion == TipoNPC.TipoAccionNPC.Automatico) return;
-
         if (!npc.DialogoActivo)
             npc.IniciarDialogo();
         else
             npc.SiguienteLinea();
     }
-
-
-
-
 }
 
