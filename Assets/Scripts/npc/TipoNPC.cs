@@ -1,4 +1,4 @@
-﻿using System.Collections;
+ï»¿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,6 +11,8 @@ public class TipoNPC : MonoBehaviour
     [SerializeField] private string nombreNPC = "NPC sin nombre";
     [SerializeField] private GameObject iconoInteraccion;
 
+    [SerializeField] private ItemSpawner itemSpawner;
+
     public enum TipoAccionNPC
     {
         Ninguna,
@@ -20,11 +22,11 @@ public class TipoNPC : MonoBehaviour
         Automatico
     }
 
-    [Header("Diálogo del NPC")]
+    [Header("DiÃ¡logo del NPC")]
     [TextArea(2, 6)]
     [SerializeField] private string[] lineasDialogo;
 
-    [Header("Acción al interactuar")]
+    [Header("AcciÃ³n al interactuar")]
     [SerializeField] private TipoAccionNPC tipoAccion = TipoAccionNPC.Ninguna;
 
     [Header("Referencias UI locales")]
@@ -33,9 +35,9 @@ public class TipoNPC : MonoBehaviour
     [SerializeField] private TMP_Text textoDialogo;
 
 
-    [Header("Animación del panel")]
-    [SerializeField] private float duracionAnimacion = 0.3f; // tiempo de animación
-    [SerializeField] private Vector3 escalaMax = Vector3.one; // tamaño final del panel
+    [Header("AnimaciÃ³n del panel")]
+    [SerializeField] private float duracionAnimacion = 0.3f; // tiempo de animaciÃ³n
+    [SerializeField] private Vector3 escalaMax = Vector3.one; // tamaÃ±o final del panel
 
 
     private int indiceLinea = 0;
@@ -44,7 +46,7 @@ public class TipoNPC : MonoBehaviour
 
     public TipoAccionNPC TipoAccion => tipoAccion;
 
-    // SortingGroup cache para la actualización dinámica
+    // SortingGroup cache para la actualizaciÃ³n dinÃ¡mica
     private SortingGroup sortingGroup;
 
     private void Awake()
@@ -67,6 +69,13 @@ public class TipoNPC : MonoBehaviour
 
     public void IniciarDialogo()
     {
+
+        if (tipoAccion == TipoAccionNPC.DarItem && accionEjecutada)
+        {
+            Debug.Log("El NPC ya ha dado su item, no puede dar otro.");
+            return;
+        }
+
         // Si el NPC es de tipo cinematica, no muestra diálogo
         if (tipoAccion == TipoAccionNPC.Cinematica)
         {
@@ -74,7 +83,7 @@ public class TipoNPC : MonoBehaviour
             return;
         }
 
-        // Si no hay líneas, ejecutar directamente la acción
+        // Si no hay lÃ­neas, ejecutar directamente la acciÃ³n
         if (lineasDialogo.Length == 0)
         {
             EjecutarAccion();
@@ -98,7 +107,7 @@ public class TipoNPC : MonoBehaviour
 
         if (indiceLinea >= lineasDialogo.Length)
         {
-            // Termina el diálogo y recién ahí ejecuta la acción
+            // Termina el diÃ¡logo y reciÃ©n ahÃ­ ejecuta la acciÃ³n
             CerrarDialogo(true);
             return;
         }
@@ -110,14 +119,14 @@ public class TipoNPC : MonoBehaviour
     {
         dialogoActivo = false;
 
-        // Solo ejecutar la acción si el diálogo llegó al final
+        // Solo ejecutar la acciÃ³n si el diÃ¡logo llegÃ³ al final
         if (finalizado && !accionEjecutada)
         {
             EjecutarAccion();
             accionEjecutada = true;
         }
 
-        // Inicia animación de cierre SOLO si el panel está activo
+        // Inicia animaciÃ³n de cierre SOLO si el panel estÃ¡ activo
         if (panelDialogo != null && panelDialogo.activeSelf)
         {
             StartCoroutine(OcultarPanel());
@@ -144,7 +153,7 @@ public class TipoNPC : MonoBehaviour
 
         panelDialogo.transform.localScale = escalaMax;
 
-        // Mostrar el texto después de la animación
+        // Mostrar el texto despuÃ©s de la animaciÃ³n
         textoNombre.text = nombreNPC;
         textoDialogo.text = lineasDialogo[0];
         indiceLinea = 0;
@@ -170,7 +179,7 @@ public class TipoNPC : MonoBehaviour
         textoDialogo.text = "";
         textoNombre.text = "";
 
-        // Ahora sí mostramos el icono si corresponde
+        // Ahora sÃ­ mostramos el icono si corresponde
         if (tipoAccion != TipoAccionNPC.Automatico)
             MostrarIcono(true);
     }
@@ -189,16 +198,27 @@ public class TipoNPC : MonoBehaviour
         switch (tipoAccion)
         {
             case TipoAccionNPC.Ninguna:
-                Debug.Log("Solo diálogo, no hay acción especial.");
+                Debug.Log("Solo diÃ¡logo, no hay acciÃ³n especial.");
                 break;
             case TipoAccionNPC.DarItem:
-                Debug.Log($"NPC dio un item.");
+
+                //if(accionEjecutada)return;
+                //accionEjecutada = true;
+                Debug.Log("El NPC dio un item al jugador.");
+                if (itemSpawner != null)
+                {
+                    itemSpawner.SpawnItem();
+                }
+                else
+                {
+                    Debug.LogWarning("El ItemSpawner no está asignado en el NPC.");
+                }
                 break;
             case TipoAccionNPC.AbrirTienda:
-                Debug.Log("Se abrió la tienda del NPC.");
+                Debug.Log("Se abriÃ³ la tienda del NPC.");
                 break;
             case TipoAccionNPC.Cinematica:
-                Debug.Log("Se activó una cinemática del NPC.");
+                Debug.Log("Se activÃ³ una cinemÃ¡tica del NPC.");
                 break;
         }
     }
@@ -206,10 +226,10 @@ public class TipoNPC : MonoBehaviour
 
 
     /// <summary>
-    /// Actualiza el sorting order del NPC en relación al jugador.
+    /// Actualiza el sorting order del NPC en relaciÃ³n al jugador.
     /// Requiere que el jugador y el NPC tengan `SortingGroup`. 
-    /// Lógica: si el jugador está por debajo (y por tanto debe aparecer en primer plano),
-    /// el NPC toma `playerOrder - 1`. Si el jugador está por encima, NPC toma `playerOrder + 1`.
+    /// LÃ³gica: si el jugador estÃ¡ por debajo (y por tanto debe aparecer en primer plano),
+    /// el NPC toma `playerOrder - 1`. Si el jugador estÃ¡ por encima, NPC toma `playerOrder + 1`.
     /// </summary>
     /// <param name="jugadorTransform">Transform del jugador</param>
     /// <param name="playerSortingGroup">SortingGroup del jugador (si se conoce, evita GetComponent)</param>
@@ -222,12 +242,12 @@ public class TipoNPC : MonoBehaviour
         if (jugadorTransform == null)
             return;
 
-        // Obtener SortingGroup del jugador si no se pasó
+        // Obtener SortingGroup del jugador si no se pasÃ³
         if (playerSortingGroup == null)
             playerSortingGroup = jugadorTransform.GetComponentInChildren<SortingGroup>();
 
         if (playerSortingGroup == null)
-            return; // ambos deben tener SortingGroup según tu especificación
+            return; // ambos deben tener SortingGroup segÃºn tu especificaciÃ³n
 
         // Sincronizar capa y calcular orden relativo
         sortingGroup.sortingLayerID = playerSortingGroup.sortingLayerID;
@@ -238,7 +258,7 @@ public class TipoNPC : MonoBehaviour
 
         int desiredOrder;
 
-        // Si el jugador está por debajo (Y menor) debe aparecer en primer plano -> playerOrder mayor que NPC
+        // Si el jugador estÃ¡ por debajo (Y menor) debe aparecer en primer plano -> playerOrder mayor que NPC
         if (playerY < npcY)
             desiredOrder = playerOrder - 1;
         else
