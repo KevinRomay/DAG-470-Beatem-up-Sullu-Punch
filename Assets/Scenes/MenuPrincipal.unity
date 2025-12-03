@@ -1211,7 +1211,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7526119136725860154, guid: 2e60a764cb8206f4487c563f711dcc76, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4bd959765afc82c48a6f0586a997cf10, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3229de46355e4d041b1c30d11fa97e8a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -9936,7 +9936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &3318923445474415308
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10081,7 +10081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3709784443625668631
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12726,7 +12726,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 2e60a764cb8206f4487c563f711dcc76, type: 2}
   musicGroup: {fileID: 7526119136725860154, guid: 2e60a764cb8206f4487c563f711dcc76, type: 2}
   sfxGroup: {fileID: 5181326060164173711, guid: 2e60a764cb8206f4487c563f711dcc76, type: 2}
-  menusClip: {fileID: 8300000, guid: c476280d68f7ddf48b3d54f72eda3257, type: 3}
+  menusClip: {fileID: 8300000, guid: 3229de46355e4d041b1c30d11fa97e8a, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 9f1c19a483a70f049981a8f55e3d2aed, type: 3}
   musicSource: {fileID: 275181947}
   sfxSource: {fileID: 275181947}
