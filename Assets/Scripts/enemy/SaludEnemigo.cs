@@ -4,49 +4,64 @@ using UnityEngine;
 
 /// <summary>
 /// Gestiona la salud del enemigo.
-/// Recibe da�o y reporta si el enemigo est� muerto.
+/// Recibe daño y reporta si el enemigo esta muerto.
 /// </summary>
 public class SaludEnemigo : MonoBehaviour
 {
-    [Header("Configuraci�n de Salud")]
-    [SerializeField] private float vidaMaxima = 100f;
+    [Header("Configuracion de Salud")]
+    public float vidaMaxima = 100f;
 
     // Esta variable es le�da por otros scripts (como el Controlador)
     [HideInInspector]
     public bool estaMuerto = false;
 
-    // Variable interna para llevar la cuenta
-    [SerializeField] private float vidaActual;
-
-    void Start()
+    private ControladorEnemigo controlador;
+    private float vidaActual;
+    void Awake() // Cambiamos Start por Awake para asegurar que la referencia est� lista
     {
-        // Al empezar, el enemigo tiene la vida al m�ximo
+        InicializarVida();
+        // --- A�ADE ESTA L�NEA ---
+        controlador = GetComponent<ControladorEnemigo>();
+    }
+
+
+    // Inicializa la vida del enemigo
+    public void InicializarVida()
+    {
+        // Al empezar, el enemigo tiene la vida al maximo
         vidaActual = vidaMaxima;
         estaMuerto = false;
     }
 
     /// <summary>
-    /// M�todo p�blico para que otros scripts (como un proyectil o el ataque del jugador)
-    /// puedan infligir da�o a este enemigo.
+    /// Metodo publico para que otros scripts (como un proyectil o el ataque del jugador)
+    /// puedan infligir daño a este enemigo.
     /// </summary>
-    /// <param name="cantidad">La cantidad de da�o recibido.</param>
+    /// <param name="cantidad">La cantidad de daño recibido.</param>
     public void RecibirDaño(float cantidad)
     {
-        // Si ya est� muerto, no puede recibir m�s da�o.
+        // Si ya esta muerto, no puede recibir mss daño.
         if (estaMuerto)
         {
             return;
         }
 
-        // Restamos el da�o a la vida actual
+        // Restamos el daño a la vida actual
         vidaActual -= cantidad;
 
-        // Comprobamos si el da�o ha matado al enemigo
+        // Comprobamos si el daño ha matado al enemigo
         if (vidaActual <= 0)
         {
-            vidaActual = 0; // Evitamos que la vida sea negativa
+            vidaActual = 0;
             estaMuerto = true;
             Debug.Log(gameObject.name + " ha sido derrotado.");
+            Morir();
         }
     }
+
+    public void Morir()
+    {
+        if (GameManager.instancia != null)
+        GameManager.instancia.RegistrarEnemigoDerrotado();
+    } 
 }

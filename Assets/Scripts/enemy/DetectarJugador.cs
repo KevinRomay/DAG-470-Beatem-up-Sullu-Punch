@@ -2,55 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Revisa constantemente si el jugador está dentro de un rango definido.
-/// Su estado (isPlayerDetected) es leído por el ControladorEnemigo.
-/// </summary>
 public class DetectarJugador : MonoBehaviour
 {
     [Header("Configuración de Detección")]
     public float rangoDeteccion = 5f;
+    [Tooltip("Capas que bloquearán la visión del enemigo (ej: Muros, Obstaculos)")]
+    public LayerMask capasDeObstaculos; // <<-- NUEVA VARIABLE
 
-    [Header("Referencia (Asignar Manualmente)")]
-    // Arrastra el GameObject del Jugador aquí
+    [Header("Referencias")]
     public Transform jugador;
 
-    // Esta es la variable de "salida" que leerá el ControladorEnemigo
-    // La ocultamos del inspector porque no queremos cambiarla manualmente
     [HideInInspector]
     public bool isPlayerDetected = false;
 
-    void Start()
+    private void Start()
     {
-        // Importante: Notificar si el programador olvidó asignar al jugador
         if (jugador == null)
-        {
-            Debug.LogError("DetectarJugador: No se ha asignado al Jugador en el Inspector!", this.gameObject);
-        }
+            jugador = GameObject.FindGameObjectWithTag("Player")?.transform; // El '?' es un atajo para evitar errores si no lo encuentra
     }
 
     void Update()
     {
-        // Si no hay jugador, no podemos detectar nada
         if (jugador == null)
         {
             isPlayerDetected = false;
             return;
         }
 
-        // 1. Calcular la distancia al jugador
-        float distancia = Vector2.Distance(transform.position, jugador.position);
+        // 1. Primero, comprobamos si está en el rango (usando la versión optimizada)
+        float distanciaCuadrada = (jugador.position - transform.position).sqrMagnitude;
+        if (distanciaCuadrada <= (rangoDeteccion * rangoDeteccion))
+        {
+            // 2. Si está en rango, lanzamos un rayo para ver si hay obstáculos
+            Vector2 direccionAlJugador = (jugador.position - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direccionAlJugador, rangoDeteccion, capasDeObstaculos);
 
-        // 2. Actualizar el estado de detección
-        // (Esto es una forma corta de hacer un if/else)
-        isPlayerDetected = (distancia <= rangoDeteccion);
+            // Si el rayo NO golpea nada (o sea, no hay obstáculos en medio)...
+            if (hit.collider == null)
+            {
+                isPlayerDetected = true;
+            }
+            // Opcional: Si el rayo SÍ golpea algo, y ese algo es el jugador, también es válido.
+            else if (hit.transform == jugador)
+            {
+                isPlayerDetected = true;
+            }
+            else // Si el rayo golpea un obstáculo
+            {
+                isPlayerDetected = false;
+            }
+        }
+        else
+        {
+            isPlayerDetected = false;
+        }
     }
 
-    // --- Ayuda Visual en el Editor ---
-    // Dibuja un círculo en el editor de Unity para ver el rango de detección
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, rangoDeteccion);
+
+        // También dibujamos la línea de visión para depuración
+        if (isPlayerDetected)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, jugador.position);
+        }
     }
 }

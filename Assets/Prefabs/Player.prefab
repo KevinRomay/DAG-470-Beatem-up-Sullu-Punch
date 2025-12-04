@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 72239864141862830}
   - component: {fileID: 1296692599503937688}
   - component: {fileID: 1469802692332654023}
-  - component: {fileID: 128335686173920160}
   - component: {fileID: 5834119709035615131}
   - component: {fileID: 4382250441438185407}
   - component: {fileID: 688707506001604082}
@@ -116,14 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40ade94853290246bcecc7670d9fb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 0.6
-  attackDistance: 0.2
-  attackOffset: {x: 0.5, y: 0}
-  attackLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  animator: {fileID: 3047726275026368000}
-  attackDelay: 0.25
+  "da\xF1o": 10
+  tiempoEntreAtaques: 0.4
+  zonaAtaque: {fileID: 0}
 --- !u!114 &1296692599503937688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +132,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 1.8
   velocidadDiagonal: 1.8
+  runSpeedMultiplier: 1.7
+  airControl: 1
+  jumpForce: 6
+  gravity: 18
+  visualRoot: {fileID: 0}
+  animator: {fileID: 0}
+  paramSpeed: Speed
+  paramIsRunning: IsRunning
+  paramJumpStart: JumpStart
+  paramIsFalling: IsFalling
+  paramLand: Land
+  speedDampTime: 0.08
   currentState: 0
+  visualOffsetY: 0
 --- !u!114 &1469802692332654023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,20 +161,6 @@ MonoBehaviour:
   vidaMax: 100
   vidaActual: 0
   barraDeVida: {fileID: 0}
---- !u!114 &128335686173920160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146441838764267770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6696f3bbd35ba5a46ba01751c6c02296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1469802692332654023}
-  timerManager: {fileID: 0}
 --- !u!114 &5834119709035615131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +213,33 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 16257aa2-444a-4ba9-94cf-b6398589460c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  a_lanzar:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ddc58d91-da6a-48c2-9a6a-098b95cec8aa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  a_jump:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ef2cacf8-07cf-4b3a-8347-6ec2ca8b2465
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  a_run:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ac25c8e5-5502-4b42-acc7-82c4e6c85196
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

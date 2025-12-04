@@ -12,10 +12,18 @@ public class AtaqueDistanciaJugador : MonoBehaviour
     private float proximoLanzamiento = 0f;
     private float umbralY = 0.15f;
     private bool proyectilUsado = false;
+
+    private bool inputListo = false;
+    private float retrasoInput = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke(nameof(ActivarInput), retrasoInput);
+    }
+
+    private void ActivarInput()
+    {
+      inputListo = true;
     }
 
     // Update is called once per frame
@@ -25,51 +33,26 @@ public class AtaqueDistanciaJugador : MonoBehaviour
     }
     public void Lanzar()
     {
+        if (!inputListo)
+        return;
         if (proyectilUsado)
             return;
         if (Time.time < proximoLanzamiento)
             return;
-
-        Transform objetivo = BuscarEnemigoAlineado();
-                  if (objetivo == null)
-                  {
-                    return;
-                  }
+        float diferenciaY = Mathf.Abs(transform.position.y - puntoDisparo.position.y);
+        if (diferenciaY > umbralY)
+        return;
+        proximoLanzamiento = Time.time + tiempoEntreLanzamientos;
 
         if (proyectilPrefab != null && puntoDisparo != null)
         {
-        GameObject bala = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
-
-        ProyectilJugador pj = bala.GetComponent<ProyectilJugador>();
-          if (pj != null)
-          {
-            pj.direccion = (objetivo.position.x < transform.position.x) ? Vector2.left : Vector2.right; // NUEVO
-          }
-
+            GameObject bala = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
+            Rigidbody2D rb = bala.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 direccion = transform.localScale.x < 0 ? Vector2.left : Vector2.right;
+                rb.velocity = direccion * velocidadProyectil;
+            }
         }
-        proximoLanzamiento = Time.time + tiempoEntreLanzamientos;
-        proyectilUsado = true;
-    }
-    private Transform BuscarEnemigoAlineado()
-    {
-        SaludEnemigo[] enemigos = FindObjectsOfType<SaludEnemigo>();
-
-        Transform objetivo = null;
-        float mejorDistancia = Mathf.Infinity;
-
-        foreach (SaludEnemigo e in enemigos)
-        {
-            float dy = Mathf.Abs(transform.position.y - e.transform.position.y);
-                  if (dy <= umbralY)
-                  {
-                    float dx = Mathf.Abs(transform.position.x - e.transform.position.x);
-                          if (dx < mejorDistancia)
-                          {
-                            mejorDistancia = dx;
-                            objetivo = e.transform;
-                          }
-                  }
-        }
-        return objetivo;
     }
 }

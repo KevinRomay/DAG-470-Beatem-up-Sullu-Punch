@@ -1,0 +1,2314 @@
+fileFormatVersion: 2
+guid: 5b08dc00e51522144b92934d85b9ea65
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 193
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: ESCENARIO_Coloreado_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 3850
+      height: 1080
+    spriteID: f7ba26078cef0ca4986b2de6305dee27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: superior
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7915
+      y: 792
+      width: 60
+      height: 267
+    spriteID: e7f6f805bef0075479e1d1deee197a51
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7720, y: 4}
+    spritePosition: {x: 2012, y: 0}
+  - name: lineart
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1092
+      width: 2138
+      height: 1080
+    spriteID: caccb9bd5bee3074b8dbc8e7543bf955
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1092}
+    spritePosition: {x: 0, y: 0}
+  - name: techo
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4645
+      y: 1092
+      width: 2143
+      height: 198
+    spriteID: c6ed80d50086ba345b823faaa2c79bb2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4645, y: 1092}
+    spritePosition: {x: 0, y: 882}
+  - name: columnas
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2150
+      y: 1092
+      width: 1448
+      height: 1039
+    spriteID: 70e199a4d9831854ab130f9a638b1c70
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2150, y: 1092}
+    spritePosition: {x: 720, y: 0}
+  - name: caja separadas
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 433
+      width: 135
+      height: 105
+    spriteID: 61296a28c831b964faf744d40da1bd2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 433}
+    spritePosition: {x: 2960, y: 685}
+  - name: Fardo
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6528
+      y: 1298
+      width: 257
+      height: 127
+    spriteID: 08adbda77d05cf243b83b1d3d0e620a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 6528, y: 1298}
+    spritePosition: {x: 2882, y: 599}
+  - name: Tutuma
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 1060
+      width: 40
+      height: 23
+    spriteID: f6bb3eaf464d1c140bf9f9421d262e12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 1060}
+    spritePosition: {x: 3169, y: 744}
+  - name: lata 0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8068
+      y: 997
+      width: 25
+      height: 43
+    spriteID: 1e9f2e13b8344d94a82ad30115d9a3d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8068, y: 997}
+    spritePosition: {x: 2721, y: 270}
+  - name: botella 3/4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8153
+      y: 433
+      width: 30
+      height: 94
+    spriteID: f5b55c071d60e8d49972649933df206e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8153, y: 433}
+    spritePosition: {x: 2659, y: 259}
+  - name: base de la mesa
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6251
+      y: 1298
+      width: 269
+      height: 197
+    spriteID: 5b6bd14d3a0a47b43a31ced0d66371bb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 6251, y: 1298}
+    spritePosition: {x: 2539, y: 110}
+  - name: silla plastico
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7996
+      y: 1092
+      width: 150
+      height: 189
+    spriteID: c808fc3db22d0a74dab180662a981514
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7996, y: 1092}
+    spritePosition: {x: 2781, y: 120}
+  - name: mesa
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7716
+      y: 1092
+      width: 272
+      height: 208
+    spriteID: 04314c7efb2e0554ea161ca61eb3d6e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7716, y: 1092}
+    spritePosition: {x: 972, y: 107}
+  - name: silla
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7886
+      y: 4
+      width: 116
+      height: 254
+    spriteID: 84cf2e1c3bfb22c459412cbfdc37aee2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7886, y: 4}
+    spritePosition: {x: 1199, y: 116}
+  - name: jarron
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 795
+      width: 93
+      height: 96
+    spriteID: 65a385efd095e4e4db33d912e9a0f377
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 795}
+    spritePosition: {x: 1333, y: 531}
+  - name: cantaro 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 4
+      width: 138
+      height: 132
+    spriteID: cbfb1f7797fdfe74699e351224cd43d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 4}
+    spritePosition: {x: 81, y: 160}
+  - name: cantaro 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 144
+      width: 124
+      height: 127
+    spriteID: 90da1d441c1740a4398d567c0d903b5f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 144}
+    spritePosition: {x: 92, y: 261}
+  - name: cantaro 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 546
+      width: 107
+      height: 115
+    spriteID: 57b43b6e0e157434a893799bbfb04504
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 546}
+    spritePosition: {x: 140, y: 287}
+  - name: cubeta
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 997
+      width: 50
+      height: 55
+    spriteID: 5ff72160c3a7efc4db610cb3cc7cafbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 997}
+    spritePosition: {x: 529, y: 535}
+  - name: botellon 3/4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 669
+      width: 83
+      height: 118
+    spriteID: 4e6e67e6dbca8654ba149f4d43f74957
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 669}
+    spritePosition: {x: 406, y: 534}
+  - name: Capa 61
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8058
+      y: 1060
+      width: 0
+      height: 0
+    spriteID: 00aceae4f3bcc974eaf6f2918adb258d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8058, y: 1060}
+    spritePosition: {x: 0, y: 1080}
+  - name: Pieza redonda
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8101
+      y: 669
+      width: 80
+      height: 87
+    spriteID: 8ed749b7ee5ad6146ad99ec003924fb6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8101, y: 669}
+    spritePosition: {x: 1804, y: 543}
+  - name: parlante
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 279
+      width: 103
+      height: 146
+    spriteID: 8a990dc7a0b77d14a8ae1c61a452fbd3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 279}
+    spritePosition: {x: 1792, y: 530}
+  - name: Capa 60
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3606
+      y: 1092
+      width: 1031
+      height: 412
+    spriteID: 0edacef5a66e29b4b94d4798b8c03cb4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3606, y: 1092}
+    spritePosition: {x: 0, y: 594}
+  - name: BANDERINES
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6796
+      y: 1092
+      width: 912
+      height: 210
+    spriteID: 3da271ad8447ea44aa0b3f62d42b5c0c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 6796, y: 1092}
+    spritePosition: {x: 0, y: 710}
+  - name: verde
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7596
+      y: 1310
+      width: 549
+      height: 131
+    spriteID: 5dfc17fc8f6434c45a078728e96f27e9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7596, y: 1310}
+    spritePosition: {x: 205, y: 713}
+  - name: naranjazz
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6796
+      y: 1310
+      width: 792
+      height: 181
+    spriteID: 1a8d1d04ecbe0bf45b71b33e32f27ebb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 6796, y: 1310}
+    spritePosition: {x: 106, y: 716}
+  - name: amarillo
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4645
+      y: 1298
+      width: 796
+      height: 163
+    spriteID: c69a19bcc325f234f855f3d7c9981feb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4645, y: 1298}
+    spritePosition: {x: 56, y: 712}
+  - name: ' rojo'
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 5449
+      y: 1298
+      width: 794
+      height: 146
+    spriteID: 66fe2e0d856762e45827a2b2abd6f096
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 5449, y: 1298}
+    spritePosition: {x: 9, y: 713}
+  - name: tela de la bandera
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8010
+      y: 899
+      width: 97
+      height: 90
+    spriteID: 2b1ab3b976fae9d45a3b507682a70e87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8010, y: 899}
+    spritePosition: {x: 3715, y: 964}
+  - name: palo de la bandera
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 8111
+      y: 795
+      width: 72
+      height: 74
+    spriteID: edc67644dde8cd647b91c6f1772bd143
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 8111, y: 795}
+    spritePosition: {x: 3679, y: 986}
+  - name: Escenario coloreado
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 3850
+      height: 1080
+    spriteID: bba9a715943c62647b9973629fbed883
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: fondo colore
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3862
+      y: 4
+      width: 3850
+      height: 1080
+    spriteID: bb5c86503d21b5c4bb470fcc574816aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3862, y: 4}
+    spritePosition: {x: 0, y: 0}
+  - name: inferior
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7909
+      y: 351
+      width: 76
+      height: 158
+    spriteID: 7de771fc5c2197543af0779534dec593
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7909, y: 351}
+    spritePosition: {x: 0, y: 0}
+  - name: puerta
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7892
+      y: 561
+      width: 96
+      height: 126
+    spriteID: 732441f809284fd488de4ed4438f3034
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7892, y: 561}
+    spritePosition: {x: 0, y: 0}
+  - name: ESCENARIO_Coloreado_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7718
+      y: 0
+      width: 160
+      height: 1086
+    spriteID: f804b7193d96f6840957a281d324507c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 7718, y: 0}
+    spritePosition: {x: 0, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 1
+    ignorePlatformSupport: 0
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: 12
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Objetos interactivos
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: fe56d3bba2a462d488d86e44d6f1e843
+    layerID: 327
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: puertas separacion
+    spriteName: puertas separacion
+    isGroup: 0
+    parentIndex: 0
+    spriteID: e7f6f805bef0075479e1d1deee197a51
+    layerID: 65
+    mosaicPosition: {x: 7720, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: frente
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: f5e3da7a3655816479be9da07309241c
+    layerID: 63
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: lineart
+    spriteName: lineart
+    isGroup: 0
+    parentIndex: 2
+    spriteID: caccb9bd5bee3074b8dbc8e7543bf955
+    layerID: 409
+    mosaicPosition: {x: 4, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: techo
+    spriteName: techo
+    isGroup: 0
+    parentIndex: 2
+    spriteID: c6ed80d50086ba345b823faaa2c79bb2
+    layerID: 283
+    mosaicPosition: {x: 4645, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: columnas
+    spriteName: columnas
+    isGroup: 0
+    parentIndex: 2
+    spriteID: 70e199a4d9831854ab130f9a638b1c70
+    layerID: 281
+    mosaicPosition: {x: 2150, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Fardo separacion de las cajas
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: ce5dab1b9598ec9488088040f77c3a76
+    layerID: 725
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: caja separadas
+    spriteName: caja separadas
+    isGroup: 0
+    parentIndex: 6
+    spriteID: 61296a28c831b964faf744d40da1bd2a
+    layerID: 724
+    mosaicPosition: {x: 8010, y: 433}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Fardo
+    spriteName: Fardo
+    isGroup: 0
+    parentIndex: 6
+    spriteID: 08adbda77d05cf243b83b1d3d0e620a9
+    layerID: 727
+    mosaicPosition: {x: 6528, y: 1298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Tutuma
+    spriteName: Tutuma
+    isGroup: 0
+    parentIndex: 0
+    spriteID: f6bb3eaf464d1c140bf9f9421d262e12
+    layerID: 57
+    mosaicPosition: {x: 8010, y: 1060}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 'Mesa plastico '
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 19a2fc4d74f9c6e43aae8ad5ad2d76a9
+    layerID: 697
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: lata
+    spriteName: 
+    isGroup: 1
+    parentIndex: 10
+    spriteID: 58808c9b64cbb5140991dbfc34b99166
+    layerID: 857
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: lata 0
+    spriteName: lata 0
+    isGroup: 0
+    parentIndex: 11
+    spriteID: 1e9f2e13b8344d94a82ad30115d9a3d7
+    layerID: 714
+    mosaicPosition: {x: 8068, y: 997}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 'lata '
+    spriteName: 
+    isGroup: 0
+    parentIndex: 11
+    spriteID: a23331de2c488b343a4879e8ef808305
+    layerID: 859
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: lata 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 11
+    spriteID: bc108cd21c2f3d042a7684b2cdcdf608
+    layerID: 860
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: botella
+    spriteName: 
+    isGroup: 1
+    parentIndex: 10
+    spriteID: 75c89771ca042734fb322168aad3cac4
+    layerID: 923
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: botella 3/4
+    spriteName: botella 3/4
+    isGroup: 0
+    parentIndex: 15
+    spriteID: f5b55c071d60e8d49972649933df206e
+    layerID: 914
+    mosaicPosition: {x: 8153, y: 433}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: botella por partes
+    spriteName: 
+    isGroup: 1
+    parentIndex: 15
+    spriteID: c25be997698db3146b6cfc3a90547b12
+    layerID: 922
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Grupo 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 32adec79ce9315b49abd6448161f6fec
+    layerID: 921
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Grupo 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: f967e21af40a1394bae904124da8bc7b
+    layerID: 920
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Grupo 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: fd716cf727191bf4d84249089f36298b
+    layerID: 919
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Grupo 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 2fc23b7b92a3d874ab1cf934090e1862
+    layerID: 918
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Grupo 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 649c4e1bf2b89514f87cd74956ac1095
+    layerID: 917
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 114
+    spriteName: 
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 8a28bba43cee5b34790b2882a9455225
+    layerID: 916
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: base de la mesa
+    spriteName: base de la mesa
+    isGroup: 0
+    parentIndex: 10
+    spriteID: 5b6bd14d3a0a47b43a31ced0d66371bb
+    layerID: 696
+    mosaicPosition: {x: 6251, y: 1298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Mesa rota
+    spriteName: 
+    isGroup: 1
+    parentIndex: 10
+    spriteID: 5d791715a95b4c3408c6451f99f77490
+    layerID: 856
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Capa 84
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: 11eb9963b219ff84aae402626fb626ba
+    layerID: 855
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 83
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: d716677df81e45b4dbe7a09ca290270a
+    layerID: 854
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: base de la mesa
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: bd7e3efa2db60bc47bc2e9cb3539f0d4
+    layerID: 853
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 82
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: 5eceda8d127a9b84b872a35adf3b6f50
+    layerID: 852
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata 1 de la mesa
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: b0c9a4a2b83fe2241876fdaf7ae1c382
+    layerID: 851
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 81
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: 3a589919476aafc498acb0152eb42d04
+    layerID: 850
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata 2 de la mesa
+    spriteName: 
+    isGroup: 0
+    parentIndex: 25
+    spriteID: 5caa8c2e09ddebe4097180f08fa0644b
+    layerID: 849
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: c8bb7ddb7e9ce304bb7041ac8bc71dda
+    layerID: 53
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: silla plastico
+    isGroup: 0
+    parentIndex: 33
+    spriteID: c808fc3db22d0a74dab180662a981514
+    layerID: 435
+    mosaicPosition: {x: 7996, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: silla plastico rota
+    spriteName: 
+    isGroup: 1
+    parentIndex: 33
+    spriteID: f0ba04225875b704698d107f7c7d74cf
+    layerID: 829
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: silla plastico
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 49c7e70130298d2438396580781491f7
+    layerID: 828
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 280de190f065c0343b226a6924bbd1f3
+    layerID: 827
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: e510278298bc2614d8370b3a9e0a612e
+    layerID: 826
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 80
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: be7375c8830267140a8feaa2392829b6
+    layerID: 825
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 79
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 6329b22ba21ac8f48a1510cba14183b7
+    layerID: 824
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 5b919bfdd90e2734eadddbb91491be30
+    layerID: 823
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 0
+    parentIndex: 35
+    spriteID: 10cbebcab2a66244ca0e79aff3bab4dd
+    layerID: 822
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla plastico
+    spriteName: 
+    isGroup: 1
+    parentIndex: 35
+    spriteID: 81f0ffa03c649304f84f412d1bfabdcf
+    layerID: 821
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: cambiar color
+    spriteName: 
+    isGroup: 0
+    parentIndex: 43
+    spriteID: 4f05b924ae5002148a81385e61943102
+    layerID: 820
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: SILLA2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 43
+    spriteID: 5550b883b0594464eae7efbd8f03a18b
+    layerID: 819
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 78
+    spriteName: 
+    isGroup: 0
+    parentIndex: 43
+    spriteID: e19cf156682bd0f41945001a8a770648
+    layerID: 818
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: mesa
+    spriteName: mesa
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 04314c7efb2e0554ea161ca61eb3d6e8
+    layerID: 45
+    mosaicPosition: {x: 7716, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: silla de madera
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 1161a0f51fc8319459fa90283299e910
+    layerID: 844
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: silla
+    spriteName: silla
+    isGroup: 0
+    parentIndex: 48
+    spriteID: 84cf2e1c3bfb22c459412cbfdc37aee2
+    layerID: 658
+    mosaicPosition: {x: 7886, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: silla partes rotas
+    spriteName: 
+    isGroup: 1
+    parentIndex: 48
+    spriteID: 0d8d3fb122f91ad4ea9aaee485f0aa56
+    layerID: 840
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: base de silla
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 8d8de08406c2fdc488183604c03ddee7
+    layerID: 839
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: base de silla 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 88c0fda0a65128c42aa6ddb46b509f4e
+    layerID: 838
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata de silla 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: b8c7cf3d2f91a8a489e3e7ff02a5e197
+    layerID: 837
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata de silla 2
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 58483cb2499a27343814c26f899c4be6
+    layerID: 836
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: madera 1 del espaldar silla
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 3182b76155b1e24459f2543b83a6e741
+    layerID: 835
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: madera 2 del espaldar silla
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: dc5994097dc3257459177eba1a61947d
+    layerID: 834
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata larga silla 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 16704e6d1d7c31049984937451fb144b
+    layerID: 833
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: pata larga silla 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 50
+    spriteID: 5164a011046a207479fcde198b5f9483
+    layerID: 832
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: jarron 3/4
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 64de2a34f80cdf042b5c48d20dd09363
+    layerID: 779
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: jarron
+    spriteName: jarron
+    isGroup: 0
+    parentIndex: 59
+    spriteID: 65a385efd095e4e4db33d912e9a0f377
+    layerID: 785
+    mosaicPosition: {x: 8010, y: 795}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: jarron roto
+    spriteName: 
+    isGroup: 1
+    parentIndex: 59
+    spriteID: b03b705f9d3950042a437453c1ddf534
+    layerID: 815
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: jarron 3/4
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: c05ccb2b0ec7a0a4dbe97605cf1fe1e7
+    layerID: 814
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 77
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: e743b0763062eff44850bf66a4f79695
+    layerID: 813
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 76
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: d4a1fd0e84a5d2748a635bb1ca6e2cac
+    layerID: 812
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 75
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 06c039966f26e56419e45c52457094cb
+    layerID: 811
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 74
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: ed5be4fc58b9c464f8380c4038f32e86
+    layerID: 810
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 73
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 2c1b7c6882094d649b46b4e4276955d4
+    layerID: 809
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 72
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: b15c534914d04314fabde110c81ac607
+    layerID: 808
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 71
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 9613901fd2180be428aaad532feef597
+    layerID: 807
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 70
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: ae7865690976850429ec93520175f866
+    layerID: 806
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 69
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 6c4b9f2d6348f25418adda608ad6e1bc
+    layerID: 805
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 68
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 098dcf10a98af9d4ebd60d7480db6090
+    layerID: 804
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 67
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: c05861dbf21a99d4bb8edfd2a30b10eb
+    layerID: 803
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 66
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 2c4754f8b4e627f44be4bbb3dd873885
+    layerID: 802
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 65
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 36854c8d84fabe846b729063535abc39
+    layerID: 801
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: jarron 3/4
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: ffb41227810109e448ce58e46693a7c9
+    layerID: 800
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: jarron 3/4
+    spriteName: 
+    isGroup: 0
+    parentIndex: 61
+    spriteID: 0a611023758dd3245b02a7d61039f9e6
+    layerID: 799
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: jarron 3/4
+    spriteName: 
+    isGroup: 1
+    parentIndex: 61
+    spriteID: 2eaac9bce4033b64e8b6162a40ebe12f
+    layerID: 798
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Capa 64
+    spriteName: 
+    isGroup: 0
+    parentIndex: 78
+    spriteID: f8b0fafd04115fc46a2b3da6c11dfd68
+    layerID: 797
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 63
+    spriteName: 
+    isGroup: 0
+    parentIndex: 78
+    spriteID: 01b53ef5e67bb084f8ebbeaea53074c2
+    layerID: 796
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 62
+    spriteName: 
+    isGroup: 0
+    parentIndex: 78
+    spriteID: 15d4d632e8007fa42a9854e9a3e1d0fe
+    layerID: 795
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Cantaros separados
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: b5ff9b8cccec88641aa2654446d09d20
+    layerID: 768
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Cantaros
+    spriteName: 
+    isGroup: 1
+    parentIndex: 82
+    spriteID: 4a6c7ea59175aa64085e88191b6c418f
+    layerID: 903
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 1
+    spriteName: cantaro 1
+    isGroup: 0
+    parentIndex: 83
+    spriteID: cbfb1f7797fdfe74699e351224cd43d6
+    layerID: 770
+    mosaicPosition: {x: 8010, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cantaro 2
+    spriteName: cantaro 2
+    isGroup: 0
+    parentIndex: 83
+    spriteID: 90da1d441c1740a4398d567c0d903b5f
+    layerID: 771
+    mosaicPosition: {x: 8010, y: 144}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: cantaro 3
+    spriteName: cantaro 3
+    isGroup: 0
+    parentIndex: 83
+    spriteID: 57b43b6e0e157434a893799bbfb04504
+    layerID: 772
+    mosaicPosition: {x: 8010, y: 546}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cantaros separados
+    spriteName: 
+    isGroup: 1
+    parentIndex: 82
+    spriteID: e8a535c6117ac3642acdfb2d153f2784
+    layerID: 890
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: cantaro 1 roto
+    spriteName: 
+    isGroup: 1
+    parentIndex: 87
+    spriteID: 4249b90173bafbc43a31f0e56c861649
+    layerID: 889
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 99
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: 4fdd781d0dd3582479b18268fdb46288
+    layerID: 888
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 98
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: eab74a63b132f224fa40e9fd36014b6c
+    layerID: 887
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 97
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: a3ad9493845a6ea4b8f84fb5c5645690
+    layerID: 886
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 96
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: 7500490bce3bc524497b103e16a867c9
+    layerID: 885
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 95
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: 2c6a4928b9f10e54e9582831a24b61a6
+    layerID: 884
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: 17f15293a637fc642a85baf28d74aeff
+    layerID: 883
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 94
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: e8c03949630daad4f9dfe64d2675e2f9
+    layerID: 882
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 88
+    spriteID: c3a1e9e716fa48042b58d14e50286999
+    layerID: 881
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: cantaro 2 roto
+    spriteName: 
+    isGroup: 1
+    parentIndex: 87
+    spriteID: 3a8a9d4bfb8c88e4994c2f9cbe1874e3
+    layerID: 902
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 108
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 31a7a88a21eeedb49987947e117e3897
+    layerID: 901
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 107
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 5a66fd05829c54b47a19d36a4c790256
+    layerID: 900
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 106
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: af353570363466c48808d48b2a221ac2
+    layerID: 899
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 105
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 62b2a06b38b6111469e5babed6afbe6f
+    layerID: 898
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 104
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: e7fcae9357755254ba49b8131da94dc6
+    layerID: 897
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 103
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 12c9bd6b11f7d584897e607d27c2a06e
+    layerID: 896
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 102
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 78e3265ad64d66a4e9549bf916e07ae5
+    layerID: 895
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 101
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: 29f7801dcfc106c4cbe3af92120d6742
+    layerID: 894
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 100
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: eb632f513d741cc44b81b650890920ab
+    layerID: 893
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 97
+    spriteID: ac94262bfde12aa4f83ccf5e91ed2e7f
+    layerID: 892
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 3 roto
+    spriteName: 
+    isGroup: 1
+    parentIndex: 87
+    spriteID: 9e064e98fb57f7940a454517c58b4d13
+    layerID: 876
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 93
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 189da5657c65c5747b0338b544113043
+    layerID: 875
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 92
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 802f0837da3071d40a9d75ccb396f475
+    layerID: 874
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 91
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: e436dbdf57cbcc44281162d4e7813001
+    layerID: 873
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 90
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: a627e653fdc96034d80aa38927177c41
+    layerID: 872
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 89
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 426375a9a99c650428e28e95542cd202
+    layerID: 871
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 88
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 5ef148dc12c9e4d41b3474aaed4780ff
+    layerID: 870
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 87
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 0b834b2fb09d7154e99160ef0be74a63
+    layerID: 869
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 86
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: a82a2b405aed8cb4ea9ef98a9d67c2f9
+    layerID: 868
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 85
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 09408043d9739124eb7fcc222d1abae7
+    layerID: 867
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cantaro 3
+    spriteName: 
+    isGroup: 0
+    parentIndex: 108
+    spriteID: 6e3c4b0a813958e4c9d74f4ad878abbb
+    layerID: 866
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: cubeta
+    spriteName: cubeta
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 5ff72160c3a7efc4db610cb3cc7cafbd
+    layerID: 37
+    mosaicPosition: {x: 8010, y: 997}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: botellon 3/4
+    spriteName: botellon 3/4
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 4e6e67e6dbca8654ba149f4d43f74957
+    layerID: 774
+    mosaicPosition: {x: 8010, y: 669}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 'objetos animables '
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: a08fb48ec8c0240498520fa032f21f32
+    layerID: 450
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: parlante
+    spriteName: 
+    isGroup: 1
+    parentIndex: 121
+    spriteID: f82490adff66f7f4780073ada99e6c81
+    layerID: 734
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 61
+    spriteName: Capa 61
+    isGroup: 0
+    parentIndex: 122
+    spriteID: 00aceae4f3bcc974eaf6f2918adb258d
+    layerID: 790
+    mosaicPosition: {x: 8058, y: 1060}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: partes animables
+    spriteName: 
+    isGroup: 1
+    parentIndex: 122
+    spriteID: 9181118e593e2e2478ce08bb89512aee
+    layerID: 788
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Pieza redonda
+    spriteName: Pieza redonda
+    isGroup: 0
+    parentIndex: 124
+    spriteID: 8ed749b7ee5ad6146ad99ec003924fb6
+    layerID: 748
+    mosaicPosition: {x: 8101, y: 669}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: parlante
+    spriteName: parlante
+    isGroup: 0
+    parentIndex: 124
+    spriteID: 8a990dc7a0b77d14a8ae1c61a452fbd3
+    layerID: 733
+    mosaicPosition: {x: 8010, y: 279}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: banderines
+    spriteName: 
+    isGroup: 1
+    parentIndex: 121
+    spriteID: 9888d9174a70c34409447b3971b2c154
+    layerID: 59
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Capa 60
+    spriteName: Capa 60
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 0edacef5a66e29b4b94d4798b8c03cb4
+    layerID: 787
+    mosaicPosition: {x: 3606, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BANDERINES
+    spriteName: BANDERINES
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 3da271ad8447ea44aa0b3f62d42b5c0c
+    layerID: 28
+    mosaicPosition: {x: 6796, y: 1092}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: verde
+    spriteName: verde
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 5dfc17fc8f6434c45a078728e96f27e9
+    layerID: 86
+    mosaicPosition: {x: 7596, y: 1310}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: naranjazz
+    spriteName: naranjazz
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 1a8d1d04ecbe0bf45b71b33e32f27ebb
+    layerID: 85
+    mosaicPosition: {x: 6796, y: 1310}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: amarillo
+    spriteName: amarillo
+    isGroup: 0
+    parentIndex: 127
+    spriteID: c69a19bcc325f234f855f3d7c9981feb
+    layerID: 84
+    mosaicPosition: {x: 4645, y: 1298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ' rojo'
+    spriteName: ' rojo'
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 66fe2e0d856762e45827a2b2abd6f096
+    layerID: 82
+    mosaicPosition: {x: 5449, y: 1298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 14
+    spriteName: 
+    isGroup: 0
+    parentIndex: 127
+    spriteID: 78763e1343220d8488e2072e02243da9
+    layerID: 27
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Bandera
+    spriteName: 
+    isGroup: 1
+    parentIndex: 121
+    spriteID: f735981e87270c54fb6111ecc23f134a
+    layerID: 756
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: tela de la bandera
+    spriteName: tela de la bandera
+    isGroup: 0
+    parentIndex: 135
+    spriteID: 2b1ab3b976fae9d45a3b507682a70e87
+    layerID: 758
+    mosaicPosition: {x: 8010, y: 899}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: palo de la bandera
+    spriteName: palo de la bandera
+    isGroup: 0
+    parentIndex: 135
+    spriteID: edc67644dde8cd647b91c6f1772bd143
+    layerID: 755
+    mosaicPosition: {x: 8111, y: 795}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Escenario coloreado
+    spriteName: Escenario coloreado
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bba9a715943c62647b9973629fbed883
+    layerID: 792
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: fondo colore
+    spriteName: fondo colore
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bb5c86503d21b5c4bb470fcc574816aa
+    layerID: 3
+    mosaicPosition: {x: 3862, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 639003005777108241
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 1
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
